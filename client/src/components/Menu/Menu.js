@@ -14,6 +14,10 @@ const Menu = ({ open, ...props }) => {
        
         My Podcasts
         </a>
+        <a href="/" >
+        New Episodes
+        
+        </a> 
       <a href="/" >
         Settings
         

@@ -1,11 +1,11 @@
 import { StyledHeader, LogoWrapper } from "./Header.styled";
-import logo from "../../constants/data";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
   return (
     <StyledHeader>
       <LogoWrapper>
-        <img src={logo.image} alt="crd" />
+        <img src={logo} alt="crd" />
         <p>
           &nbsp;<span>P</span>odcast
         </p>

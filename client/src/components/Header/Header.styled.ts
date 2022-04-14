@@ -2,11 +2,13 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.div`
   display: flex;
-  flex-basis: 2;
   flex-direction: row;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100px;
+  height: 10%;
   min-height: 100px;
   background-color: #171717;
   border-bottom: 2px solid #ffd021;
