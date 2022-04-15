@@ -6,7 +6,7 @@ const Menu = ({ open, ...props }) => {
 
   return (
     <StyledMenu open={open}  {...props}>
-      <a href="/">
+      <a href="/search">
        
         Search
       </a>

@@ -1,12 +1,12 @@
 import { useState, useRef } from "react";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./global";
 import { theme } from "./theme";
-import { Search, Login } from "./pages";
-import { Header, Burger, Menu } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FocusLock from "react-focus-lock";
 
+import { GlobalStyles } from "./global";
+import { Search, Login, PodcastPage } from "./pages";
+import { Header, Burger, Menu } from "./components";
 import { useOnClickOutside, useDisableBodyScroll } from "./hooks";
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-
       <Router>
         <Routes>
           <Route
@@ -35,9 +34,17 @@ function App() {
               </>
             }
           />
+          <Route
+            path="/PodcastPage"
+            element={
+              <>
+                <Header />
+                <PodcastPage />
+              </>
+            }
+          />
         </Routes>
       </Router>
-
       {loggedIn && (
         <div ref={node}>
           <FocusLock disabled={!open}>

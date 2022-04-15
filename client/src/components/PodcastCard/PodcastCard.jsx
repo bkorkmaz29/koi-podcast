@@ -2,9 +2,14 @@ import { StyledCard } from "./PodcastCard.styled";
 import { Info } from "..";
 import { Podcast } from '../../models/models'
 
-const PodcastCard = ({ podcast }) => {
+const PodcastCard = ({ podcast, onClick }) => {
+
+  const handleClick = () => {
+    onClick(podcast.id);
+  }
+
   return (
-    <StyledCard>
+    <StyledCard onClick={handleClick}>
       <div className="img-wrapper">
         <img src={podcast.image} alt="Podcast" />
       </div>

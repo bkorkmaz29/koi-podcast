@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const StyledInfo = styled.div`
   display: flex;
-  margin: 0.75rem;
+  margin: auto;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   font-family: "Verdana";
   font-weight: bold;
-  max-width: 80%;
+   width: 50%;
+  
 
   background-color: #171717;
 

@@ -6,11 +6,18 @@ export interface User {
 
   export interface Podcast {
       id: number;
-      title: String;
-      listen: String;
-      website: String;
-      description: String;
-      producer: String;
-      children: String;
-  
+      title: string;
+      ownerName: string;
+      description: string;
+      image: string;
+      link: string;
   }
+
+  export interface Episode {
+    id: number;
+    title: string;
+    listen: string;
+    date: string;
+    
+   
+}

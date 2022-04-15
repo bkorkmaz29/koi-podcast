@@ -23,8 +23,13 @@ password: {
 date: {
     type: Date,  
     default: Date.now
-}
+},
 
+subscriptions: [
+    {
+        id: Number
+    }
+]
 
 
 })

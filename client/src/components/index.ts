@@ -6,3 +6,4 @@ export { default as PodcastCard } from './PodcastCard';
 export { default as LoginForm } from './LoginForm';
 export { default as RegisterForm } from './RegisterForm';
 export { default as Podcasts} from './Podcasts';
+export { default as Episodes} from './Episodes';

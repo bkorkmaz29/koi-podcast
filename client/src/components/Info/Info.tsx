@@ -15,7 +15,7 @@ const Info: React.FC<Props> = ({ podName, producer, description, language, websi
   return (
     <StyledInfo>
         <h1>{podName}</h1>
-        <h2>{producer}</h2>
+        <h2>by {producer}</h2>
         
         <p>{description}</p>
         <div className="links" >

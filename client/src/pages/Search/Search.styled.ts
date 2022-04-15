@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SearchContainer = styled.div`
   background-color: black;
   position: absolute;
-  top:100px;
+  top: 100px;
   left:0;
   width: 100%;
   min-height: 100vh;
@@ -15,11 +15,10 @@ export const SearchContainer = styled.div`
 
   .search-wrapper {
   display: flex;
-  flex-basis: 1;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  margin: 1rem;
+  margin: auto;
   height: 100%;
   width: 75%;
 

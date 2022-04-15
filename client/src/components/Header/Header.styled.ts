@@ -12,6 +12,7 @@ export const StyledHeader = styled.div`
   min-height: 100px;
   background-color: #171717;
   border-bottom: 2px solid #ffd021;
+  z-index: 2;
 `;
 
 export const LogoWrapper = styled.div`

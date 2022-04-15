@@ -15,8 +15,7 @@ export const StyledCard = styled.div`
     justify-content: center;
     align-items: center;
     border: 1px solid white;
-    height: 150px;
-    width: 150px;
+    width: 30%;
     min-height: 150px;
     min-width: 150px;
     margin: 5%;
