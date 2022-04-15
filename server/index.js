@@ -24,5 +24,7 @@ app.use(bodyParser.json());
 app.use('/api/user', authRoute);
 app.use('/api/podcast', podRoute);
 
+
+
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
 
