@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const SearchContainer = styled.div`
+export const StyledHome = styled.div`
   background-color: black;
   position: absolute;
-  top: 100px;
+  top: 0;
   left:0;
   width: 100%;
   min-height: 100vh;

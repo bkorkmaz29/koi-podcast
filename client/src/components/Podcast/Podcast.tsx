@@ -1,23 +1,18 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Podcast, Episode } from "../../models/models";
-import { useLocation } from "react-router-dom";
 
-import { StyledPodcastPage } from "./PodcastPage.styled";
-import { Episodes } from "../../components";
+import { IPodcast, Episode } from "../../models/models";
+import { StyledPodcast } from "./Podcast.styled";
+import { Episodes } from "../";
 
-type LocationState = {
-  id: {
-    path: String;
-  };
-};
+interface IProps {
 
-const PodcastPage: React.FC = () => {
-  const [podcast, setPodcast] = useState<Podcast>();
+  id: Number;
+}
+
+const Podcast: React.FC<IProps> = ( {id} ) => {
+  const [podcast, setPodcast] = useState<IPodcast>();
   const [episodes, setEpisodes] = useState<Array<Episode>>();
-  const location = useLocation();
-
-  const { id } = location.state as LocationState;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +25,7 @@ const PodcastPage: React.FC = () => {
         }
       );
 
-      const newPodcast: Podcast = responseInfo.data.feed;
+      const newPodcast: IPodcast = responseInfo.data.feed;
       setPodcast(newPodcast);
 
       const responseEpisodes = await axios(
@@ -49,7 +44,7 @@ const PodcastPage: React.FC = () => {
   }, [id]);
 
   return (
-    <StyledPodcastPage>
+    <StyledPodcast>
       {podcast && (
         <div className="podcast-card">
           <div className="img-wrapper">
@@ -64,8 +59,8 @@ const PodcastPage: React.FC = () => {
         </div>
       )}
       {episodes && <Episodes episodes={episodes} />}
-    </StyledPodcastPage>
+    </StyledPodcast>
   );
 };
 
-export default PodcastPage;
+export default Podcast

@@ -29,3 +29,4 @@ const SearchBar: React.FC<Props> = ({onSearch}) => {
 };
 
 export default SearchBar;
+

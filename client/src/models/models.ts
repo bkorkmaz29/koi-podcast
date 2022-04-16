@@ -4,14 +4,14 @@ export interface User {
     password: string;
   }
 
-  export interface Podcast {
-      id: number;
-      title: string;
-      ownerName: string;
-      description: string;
-      image: string;
-      link: string;
-  }
+  export interface IPodcast {
+    id: number;
+    title: string;
+    ownerName: string;
+    description: string;
+    image: string;
+    link: string;
+}
 
   export interface Episode {
     id: number;

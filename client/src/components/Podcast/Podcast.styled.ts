@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const StyledPodcastPage = styled.div`
+export const StyledPodcast = styled.div`
   background-color: black;
   position: absolute;
-  top: 100px;
   left: 0;
   width: 100%;
   min-height: 100vh;
@@ -15,9 +14,11 @@ export const StyledPodcastPage = styled.div`
   h1 {
     font-size: 2rem;
     color: #ffd021;
+    margin-bottom: 0.1rem;
   }
 
   h3 {
+    margin-top: 0;
     color: #9a9a9a;
     font-size: 0.7rem;
   }

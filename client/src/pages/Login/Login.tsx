@@ -1,61 +1,48 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import { LoginContainer } from "./Login.styled";
 import { LoginForm, RegisterForm } from "../../components";
 import { User } from "../../models/models";
+import { loginService, registerService }from "../../services/authService";
 
-interface Props {
-  loggedIn: Function;
-}
-
-const Login: React.FC<Props> = ({ loggedIn }) => {
+const Login: React.FC = () => {
   const [register, setRegister] = useState<boolean>(false);
-  const [user, setUser] = useState<User>();
-  const [token, setToken] = useState<String>();
   let navigate = useNavigate();
 
-  const routeChange = () => {
-    let path = "/search";
-    navigate(path);
+  const handleLogin = (user: User) => {
+  
+      loginService(user).then(
+        () => {
+          navigate("/home");
+          window.location.reload();
+        }
+      );
   };
-
-  const onLogin = async (loginUser: User) => {
-    setUser(loginUser);
-    await axios
-      .post(`http://localhost:5000/api/user/login`, {
-        email: loginUser.email,
-        password: loginUser.password,
-      })
-      .then((res) => setToken(res.data))
-      .catch((err) => console.error(err));
-
-    loggedIn();
-    routeChange();
-  };
-
-  const onRegister = async (RegisterUser: User) => {
-    await axios.post(`http://localhost:5000/api/user/login`, {
-      name: RegisterUser.name,
-      email: RegisterUser.email,
-      password: RegisterUser.password,
-    });
-  };
-
+  
+  const handleRegister = (user: User) => {
+  
+    loginService(user).then(
+      () => {
+        navigate("/login");
+        window.location.reload();
+      }
+    );
+    
+};
   return (
     <LoginContainer>
       <div className="form-container">
         {!register && (
           <LoginForm
-            onLogin={onLogin}
+            onLogin={handleLogin}
             onSignUp={() => setRegister(!register)}
           />
         )}
         {register && (
           <RegisterForm
             onLogin={() => setRegister(!register)}
-            onRegister={onRegister}
+            onRegister={handleLogin}
           />
         )}
       </div>

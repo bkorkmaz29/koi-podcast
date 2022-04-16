@@ -11,18 +11,13 @@ interface Props {
 
 }
 
-const Info: React.FC<Props> = ({ podName, producer, description, language, website, listen }) => {
+const Info: React.FC<Props> = ({ podName, producer, description}) => {
   return (
     <StyledInfo>
         <h1>{podName}</h1>
         <h2>by {producer}</h2>
-        
         <p>{description}</p>
-        <div className="links" >
-          <a href={listen} >Subscribe</a>
-          <a href={listen} >Listen</a>
-          <a href={website}>Website</a>          
-        </div>
+      
     </StyledInfo>
   )
 }

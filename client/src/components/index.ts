@@ -7,3 +7,6 @@ export { default as LoginForm } from './LoginForm';
 export { default as RegisterForm } from './RegisterForm';
 export { default as Podcasts} from './Podcasts';
 export { default as Episodes} from './Episodes';
+export { default as SearchBar} from './SearchBar';
+export { default as Podcast } from './Podcast';
+export { default as Subscriptions } from './Subscriptions';
