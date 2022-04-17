@@ -45,7 +45,7 @@ export const StyledCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid white;
+    
     width: 60%;
     min-height: 60%;
     min-width: 150px;

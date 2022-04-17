@@ -117,4 +117,20 @@ router.get("/subscribe", async (req, res) => {
   );
 });
 
+
+router.post("/subscribe/cancel", async (req, res) => {
+  const podcast = req.body.podcast;
+  var podcastStr = JSON.stringify(podcast)
+  const userId = req.body.userId;
+
+  await User.updateOne({ _id: userId }, { $pull: { subscriptions: podcastStr } }).then(
+    () => {
+      res.send("Subscribed");
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+});
+
 export default router;

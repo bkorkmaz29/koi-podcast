@@ -2,6 +2,7 @@ export interface User {
     name: string;
     email: string;
     password: string;
+    subs: Array<number>;
   }
 
   export interface IPodcast {
@@ -21,3 +22,10 @@ export interface User {
     
    
 }
+
+export type SubsContextType = {
+  subs: Array<number>;
+  saveSub: (sub: number) => void;
+  deleteSub: (sub: number) => void;
+  updateSubs: (sub: Array<number>) => void;
+};

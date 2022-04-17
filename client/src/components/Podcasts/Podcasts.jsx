@@ -1,14 +1,17 @@
-import React from 'react'
+
 import { StyledPodcasts} from './Podcasts.styled';
 import { PodcastCard } from '..'
 
 
-const Podcasts = ( {podcasts, onClick, subscribe} ) => {
+const Podcasts = ( {podcasts, onClick, subscribe, unsubscribe} ) => {
+  
+
+
 
   return (
       <StyledPodcasts>
     {podcasts.map((podcast) => (
-        <PodcastCard key={podcast.id} podcast={podcast} onClick={onClick} subscribe={subscribe} />
+        <PodcastCard key={podcast.id} podcast={podcast} onClick={onClick} subscribe={subscribe} unsubscribe={unsubscribe} />
       ))}
     </StyledPodcasts>
   )

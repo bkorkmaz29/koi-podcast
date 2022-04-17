@@ -44,9 +44,9 @@ export const StyledPodcast = styled.div`
   }
 
   .img-wrapper {
-    border: 1px solid white;
+    
     width: 30%;
-    height: 30%;
+    height: 20%;
     margin: 1rem;
   }
 
