@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const StyledPodcasts = styled.div`
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: space-between;
-  height: 100%;
-  width: 60%;
+  display: grid ;
+  margin-top: 1rem;
+  width: 80%;
+  grid-template-columns: auto auto auto;
+  justify-content: space-evenly;
+  min-width: 0;
 `;

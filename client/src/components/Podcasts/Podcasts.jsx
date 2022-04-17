@@ -4,10 +4,10 @@ import { PodcastCard } from '..'
 
 
 const Podcasts = ( {podcasts, onClick, subscribe} ) => {
-  
+
   return (
       <StyledPodcasts>
-    {podcasts.map((podcast, index) => (
+    {podcasts.map((podcast) => (
         <PodcastCard key={podcast.id} podcast={podcast} onClick={onClick} subscribe={subscribe} />
       ))}
     </StyledPodcasts>

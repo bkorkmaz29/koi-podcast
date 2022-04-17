@@ -8,11 +8,10 @@ export const StyledHeader = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 10%;
-  min-height: 100px;
+  height: 150px;
+  max-height: 100px;
   background-color: #171717;
   border-bottom: 2px solid #ffd021;
-  z-index: 2;
 `;
 
 export const LogoWrapper = styled.div`
@@ -25,7 +24,7 @@ export const LogoWrapper = styled.div`
   width: 75px;
   font-family: "Major Mono Display", monospace;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 1.5rem;
 
   img {
     max-width: 100%;

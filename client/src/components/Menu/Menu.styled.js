@@ -19,8 +19,16 @@ export const StyledMenu = styled.nav`
   @media (max-width: ${({ theme }) => theme.mobile}) {
       width: 100%;
     }
+  .button-wrapper {
+    position: absolute;
+    top: 15rem;
+    left: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
 
-  button {
+    button {
     background: none;
     border: none;
     font-size: 1rem;
@@ -29,7 +37,7 @@ export const StyledMenu = styled.nav`
     font-weight: bold;
     letter-spacing: 0.5rem;
     color: ${({ theme }) => theme.primaryDark};
-    text-decoration: none;
+    cursor: pointer;
     transition: color 0.3s linear;
 
     @media (max-width: ${({ theme }) => theme.mobile}) {
@@ -41,4 +49,7 @@ export const StyledMenu = styled.nav`
       color: #f3430c;
     }
   }
+
+  }
+
 `;

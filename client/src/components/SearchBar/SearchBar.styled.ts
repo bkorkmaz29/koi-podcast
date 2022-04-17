@@ -29,8 +29,11 @@ export const StyledSearchBar = styled.form`
     cursor: pointer;
     background-color: #f3430c;
     border: 1px solid #000;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
+    font-size: 1.2rem;
   }
 `;
 

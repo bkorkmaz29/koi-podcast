@@ -10,9 +10,9 @@ import { getCurrentUser, getCurrentUserId } from "../../services/authService";
 import { SearchBar, Header, Burger, Menu, Podcast } from "../../components";
 
 const Search: React.FC = () => {
-  const [found, setFound] = useState<Boolean>(false);
   const [results, setResults] = useState<any>(false);
-  const [subIds, setSubIds] = useState<Array<String>>([]);
+  const [trending, setTrending] = useState<any>(false);
+  const [subIds, setSubIds] = useState<Array<string>>([]);
 
   const [show, setShow] = useState<any>(0);
   const [podcast, setPodcast] = useState<Number>(0);
@@ -24,12 +24,7 @@ const Search: React.FC = () => {
   useOnClickOutside(node, () => setOpen(false));
   useDisableBodyScroll(open);
 
-  useEffect(() => {
-    
-    getSubIds();
-  }, [userId])
   
-
 
   const getSubIds = async () => {
 
@@ -39,30 +34,48 @@ const Search: React.FC = () => {
           userId: userId,
         },
       })
-      .then((response) => {
-       setSubIds(response.data);
+      .then((res) => {
+        const subStr = res.data;
+        
+        setSubIds(subStr);
+   
       });
   };
 
-  const handleSubscribe = async (id: String) => {
-    console.log(id);
-    console.log(userId);
+  const getTrending = async () => {
+
+    await axios
+      .get(`http://localhost:5000/api/podcast/trending`)
+      .then((res) => { setTrending(res.data.feeds); });
+  };
+
+
+
+
+  const handleSubscribe = async (podcast: IPodcast) => {
     await axios
       .post(`http://localhost:5000/api/podcast/subscribe`, {
         userId: userId,
-        id: id,
+        podcast: podcast,
       })
       .then(() => console.log("Subscribed"))
       .catch((err) => console.error(err));
   };
 
 
+  useEffect(() => {
+    
+    getSubIds();
+  }, [handleSubscribe])
+  
 
-
+  
+  useEffect(() => {
+    
+    getTrending();
+  }, [])
 
   const handleSearch = async (term: String) => {
-    console.log(term);
-
     await axios
       .get(`http://localhost:5000/api/podcast/search`, {
         params: {
@@ -71,9 +84,7 @@ const Search: React.FC = () => {
       })
       .then((response) => {
         setResults(response.data.feeds);
-        setFound(response.data.status);
       });
-    console.log(results);
   };
 
   const handleClick: Function = (id: Number) => {
@@ -84,7 +95,7 @@ const Search: React.FC = () => {
 
   return (
     <StyledHome>
-      <Header />
+  
       <div className="nav" ref={node}>
         <FocusLock disabled={!open}>
           <div className="burger">
@@ -107,11 +118,21 @@ const Search: React.FC = () => {
             <SearchBar onSearch={handleSearch} />
           </div>
           <div className="result-wrapper">
-            {found && (
+          {!results && trending && 
+          <>
+          <h3>Trending Podcasts</h3>
+            <Podcasts
+            onClick={handleClick}
+            podcasts={trending}
+            subscribe={(podcast: IPodcast) => handleSubscribe(podcast)}
+          />
+          </>
+            }
+            {results && (
               <Podcasts
                 onClick={handleClick}
                 podcasts={results}
-                subscribe={(id: String) => handleSubscribe(id)}
+                subscribe={(podcast: IPodcast) => handleSubscribe(podcast)}
               />
             )}
           </div>
@@ -119,7 +140,7 @@ const Search: React.FC = () => {
       )}
       {show === 1 && <Podcast id={podcast} />}
       {show === 2 && ( 
-        <Subscriptions subIds={subIds} onSubscribe={handleSubscribe} onClick={handleClick}/>
+        <Subscriptions subs={subIds} onSubscribe={handleSubscribe} onClick={handleClick}/>
       )}
     </StyledHome>
   );

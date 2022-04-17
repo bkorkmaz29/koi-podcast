@@ -1,55 +1,80 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef  } from "react";
 import axios from "axios";
-import { StyledSubscriptions } from "./Subscriptions.styled";
-import { Podcasts } from "../../components";
+import { StyledSubscriptions, StyledSub, StyledSubs } from "./Subscriptions.styled";
+import { Info } from "../../components";
 import { IPodcast } from "../../models/models";
 
 interface Props {
-    onClick: Function,
+    onClick: any ,
     onSubscribe: Function,
-    subIds: Array<String>
+    subs: Array<string>,
 
 }
-const Subscriptions: React.FC<Props> = ({onClick, subIds, onSubscribe}) => {
-    const [subs, setSubs] = useState<any>([]);
 
+interface SubProps {
+  onClick: any,
+  onSubscribe: Function,
+  sub: any
+}
 
-    useEffect(() => {
-      subIds.forEach((subId) => {getById(subId);});
-    
-    
-    }, [subIds])
-    
-
-
-    const getById = async (id: String) => { 
-        const responseInfo = await axios(
-          `http://localhost:5000/api/podcast/byid`,
-          {
-            params: {
-              id: id,
-            },
-          }
-        );
-        const newPodcast: IPodcast = responseInfo.data.feed;
-        setSubs([...subs, newPodcast])
-        
-    };
-   
+const Sub: React.FC<SubProps> = ({onClick, sub, onSubscribe}) => {
+  const [pod, setPod] = useState<JSON | any>()
   
+  useEffect(() => {
+    
+    const podJSON = JSON.parse(sub);
+    
+    setPod(podJSON);
+  console.log(pod);
+    
+  
+    
+  }, []);
+
+  const handleClick = () => {
+    onClick(pod.id);
+  }
+  return (
+    <StyledSub onClick={handleClick}>
+    {pod &&<div>
+      <div className="img-wrapper">
+        <img src={pod.image} alt="Podcast" />
+      </div>
+      <div className="info-wrapper">
+      <h1>{pod.title}</h1>
+      <h3>by {pod.ownerName}</h3>
+      </div>
+
+    </div> }
+    </StyledSub>
+  )
+}
+
+    
+const Subs: React.FC<Props> = ({onClick, subs, onSubscribe}) => {
   
 
+  return (
+    <StyledSubs>
+    
+    { subs.map( (sub) => ( <Sub key={sub} onClick={onClick} 
+        sub={sub} 
+        onSubscribe={onSubscribe}/>) ) }
+    </StyledSubs>
+  )
+  
+}
+
+const Subscriptions: React.FC<Props> = ({onClick, subs, onSubscribe}) => {
 
 
   return (
     <StyledSubscriptions>
-        <button >back</button>
-        <Podcasts
-          onClick={onClick}
-          podcasts={subs}
-          subscribe={onSubscribe}
-        />
+        <h2 >My Podcasts</h2>
 
+        <Subs onClick={onClick} subs={subs} onSubscribe={onSubscribe}/>
+      
+        
     </StyledSubscriptions>
   )
 }

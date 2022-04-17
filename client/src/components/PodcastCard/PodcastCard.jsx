@@ -2,6 +2,7 @@ import { StyledCard } from "./PodcastCard.styled";
 import { Info } from "..";
 import { Podcast } from '../../models/models'
 
+
 const PodcastCard = ({ podcast, onClick, subscribe }) => {
 
   const handleClick = () => {
@@ -9,24 +10,27 @@ const PodcastCard = ({ podcast, onClick, subscribe }) => {
   }
 
   const handleSubscribe = () => {
-    subscribe(podcast.id.toString());
+    subscribe(podcast);
   }
 
   return (
     <StyledCard>
       <div className="img-wrapper">
-        <img src={podcast.image} alt="Podcast" />
+        {!podcast.image && <img src={podcast.artwork} alt="Podcast" />}
+
+        {podcast.image && 
+        <img src={podcast.image} alt="Podcast" />}
+
       </div>
-      <Info
-        podName={podcast.title}
-        producer={podcast.ownerName}
-        language={podcast.language}
-        description={podcast.description}
-        
-      />
-     
-      <button  onClick={handleClick}> go to page </button>
+      <div className="info-wrapper">
+      <h1>{podcast.title}</h1>
+      <h3>by {podcast.author} </h3>
+      <div className="buttons-wrapper">
+      <button  onClick={handleClick}> listen </button>
       <button onClick={handleSubscribe}> subscribe </button>
+      </div>
+      </div>
+    
     </StyledCard>
   );
 };

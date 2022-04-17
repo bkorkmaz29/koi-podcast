@@ -11,22 +11,22 @@ export const StyledHome = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: start;
- 
+
+
 
   .search-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   height: 100%;
-  width: 75%;
-
+  width: 100%;
   }
 
   .result-wrapper {
   display: flex;
-  margin: 1rem;
   flex-direction: column;
   justify-content:center;
   align-items: center;

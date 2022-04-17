@@ -48,7 +48,7 @@ const LoginForm: React.FC<Props> = ({ onLogin, onSignUp }) => {
           <input type="checkbox" />
           <label>Remember Me</label>
         </div>
-        <button className="login-button" type="submit" value="Login">Log In</button>
+        <button className="login-button" type="submit" value="Login">Sign In</button>
         <button className="signup-button" onClick={onSignUp}>No account? Sign Up!</button>
       </div>
     </StyledLoginForm>
