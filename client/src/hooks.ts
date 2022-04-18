@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-export const useOnClickOutside = (ref, handler) => {
+export const useOnClickOutside = (ref: React.MutableRefObject<HTMLInputElement | null>, handler: Function) => {
   useEffect(() => {
-    const listener = (event) => {
+    const listener = (event: any) => {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }
@@ -16,7 +16,7 @@ export const useOnClickOutside = (ref, handler) => {
   }, [ref, handler]);
 };
 
-export const useDisableBodyScroll = (open) => {
+export const useDisableBodyScroll = (open: boolean) => {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";

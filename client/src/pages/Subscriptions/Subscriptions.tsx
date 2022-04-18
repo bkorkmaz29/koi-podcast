@@ -5,10 +5,12 @@ import { Podcast, Podcasts } from "../../components";
 import { getCurrentUser, getCurrentUserId } from "../../services/authService";
 import { IPodcast, SubsContextType } from "../../models/models";
 import { SubsContext } from "../../context/subsContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 
 const Subscriptions: React.FC = () => {
-  const [show, setShow] = useState<any>(0);
+  const [show, setShow] = useState<boolean>(false);
   const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
   const [subs, setSubs] = useState<Array<IPodcast>>([]);
   const [podcast, setPodcast] = useState<IPodcast | null>(null);
@@ -49,7 +51,7 @@ const Subscriptions: React.FC = () => {
 
   const handleClick: Function = (podcast: IPodcast) => {
     setPodcast(podcast);
-    setShow(1);
+    setShow(!show);
   };
 
   const handleUnsubscribe = async (podcast: IPodcast) => {
@@ -75,17 +77,23 @@ const Subscriptions: React.FC = () => {
       .catch((err) => console.error(err));
   };
 
+  const handleBack = () => {
+    setShow(false);
+  };
+
   return (
     <StyledSubscriptions>
-      <h2>My Podcasts</h2>
+     {!show && <h2>My Podcasts</h2> }
+     {show && <button className="button-back" onClick = {() => setShow(false)}><FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} /></button> }
       <div className="podcasts-wrapper">
+      {!show &&
       <Podcasts
         onClick={handleClick}
         podcasts={subs}
         subscribe={handleSubscribe}
         unsubscribe={handleUnsubscribe}
-      />
-      {podcast && <Podcast podcast={podcast} />}
+      /> }
+      {show && podcast && <Podcast podcast={podcast}/>}
       </div>
     </StyledSubscriptions>
   );

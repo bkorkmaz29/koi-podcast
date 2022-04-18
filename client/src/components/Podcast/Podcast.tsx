@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 
 import { IPodcast, Episode } from "../../models/models";
 import { StyledPodcast } from "./Podcast.styled";
-import { Episodes } from "../";
+import { Episodes, PodcastCard } from "../";
 
 interface IProps {
   podcast: IPodcast;
 }
 
-const Podcast: React.FC<IProps> = ({ podcast }) => {
+const Podcast: React.FC<IProps> = ({ podcast}) => {
   const [episodes, setEpisodes] = useState<Array<Episode>>();
 
   useEffect(() => {
@@ -43,6 +43,7 @@ const Podcast: React.FC<IProps> = ({ podcast }) => {
     fetchData();
   }, [podcast.id]);
 
+ 
   return (
     <StyledPodcast>
       {podcast && (
@@ -61,10 +62,11 @@ const Podcast: React.FC<IProps> = ({ podcast }) => {
                   </div>
                 ))}
               </div>
-              <p> {podcast.episodeCount} episodes</p>
-
-              <a href={podcast.link}>Website</a>
+              <p> {podcast.description}</p>
+            
+      
             </div>
+   
           </div>
         </div>
       )}

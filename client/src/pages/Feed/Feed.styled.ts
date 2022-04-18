@@ -22,6 +22,7 @@ export const StyledFeed = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 9px;
+    opacity: 0.6;
   }
 
   h1 {
@@ -34,7 +35,7 @@ export const StyledFeed = styled.div`
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(359deg);
+        transform: rotate(-359deg);
     }
 }
  

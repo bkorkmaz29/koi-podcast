@@ -63,7 +63,7 @@ const PodcastCard: React.FC<Props> = ({
           <h1>{podcast.title}</h1>
           <h3>by {podcast.author} </h3>
           <div className="cat-wrapper">
-            {Object.values(podcast.categories).map((category, index) => (
+            {podcast.categories && Object.values(podcast.categories).length < 5 && Object.values(podcast.categories).map((category, index) => (
               <div key={index} className="category">
                 {category}
               </div>

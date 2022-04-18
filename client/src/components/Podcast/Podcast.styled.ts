@@ -27,13 +27,16 @@ export const StyledPodcast = styled.div`
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: auto;
     padding: 0.7rem;
+    overflow: hidden;
+    color: ${({ theme }) => theme.white};
   }
 
+ 
   .podcast-wrapper {
-    background: linear-gradient(to bottom, #f16323 5%, #ffd021 100%);
+    background: linear-gradient(to bottom, #FFD021, 5%, #E34427 100%);
     background-color: #f16323;
     width: 50%;
     height: 50%;
@@ -44,6 +47,19 @@ export const StyledPodcast = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0.1rem;
+    -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
+  animation: fadein 1s;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   }
   .podcast-card {
     background-color: ${({ theme }) => theme.grey};
@@ -60,7 +76,9 @@ export const StyledPodcast = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: auto;
+
     
   }
 
@@ -91,14 +109,16 @@ export const StyledPodcast = styled.div`
     
 
     .category {
-      background-color: ${({ theme }) => theme.orange};
-      color: ${({ theme }) => theme.grey};
+      
+      color: ${({ theme }) => theme.orange};
       font-weight: bold;
-      border: 2px solid ${({ theme }) => theme.red};
+      border: 2px solid ${({ theme }) => theme.orange};
       font-size: 0.8rem;
       padding: 0.3rem;
       margin: auto;
-      border-radius: 36px;
+      border-radius: 9px;
+      background: none;
+      
 
 
     }

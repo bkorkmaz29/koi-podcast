@@ -1,9 +1,23 @@
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s;
+  animation: fadein 2s;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   background: linear-gradient(to bottom, #ffd021 5%, #e34427 100%);
   background-color: #f16323;
-  width: 400px;
+  width: 25rem;
   min-height: 100px;
   margin: 1rem;
   border-radius: 9px;

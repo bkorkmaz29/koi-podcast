@@ -1,36 +1,89 @@
 import styled from "styled-components";
 
 export const StyledHome = styled.div`
-  background-color: ${({ theme }) => theme.black};;
+
+  background-color: ${({ theme }) => theme.black};
   position: absolute;
+  left: 0;
   top: 0;
-  left:0;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
+  min-width: 100vw;
+  display: grid;
+  grid-template-rows: 0fr 0fr 2fr;
+  padding: 2rem;
 
-
+  .podcasts-wrapper {
+    
+    margin: auto;
+    
+  }
 
   .search-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  height: 100%;
-  width: 100%;
+    -webkit-animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -ms-animation: fadein 1s;
+    -o-animation: fadein 1s;
+    animation: fadein 1s;
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 2rem;
+  
   }
 
   .result-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
-  width: 90%;
+    margin: auto;
+    padding: 2rem;
   }
 
+  .button-back {
+      font-size: 2.2rem;
+      margin: auto;
+    
+      background: none;
+      border: none;
+      padding: 1rem;
+      color: ${({ theme }) => theme.white};
+      cursor: pointer;
+      transition: transform 0.4s;
+      transition: all 0.3s linear;
+      &:hover {
+        color: ${({ theme }) => theme.orange};
+        transform: scale(1.2);
+      }
+    }
+  
+
+  h2 {
+    -webkit-animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -ms-animation: fadein 1s;
+    -o-animation: fadein 1s;
+    animation: fadein 1s;
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    color: ${({ theme }) => theme.white};
+    margin: auto;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    
+  }
 `;

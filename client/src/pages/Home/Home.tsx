@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
 import { StyledHome } from "./Home.styled";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { User, IPodcast, SubsContextType } from "../../models/models";
 import { getCurrentUser, getCurrentUserId } from "../../services/authService";
 import { SearchBar, Burger, Menu, Podcast, Podcasts } from "../../components";
@@ -11,7 +12,7 @@ const Search: React.FC = () => {
   const [results, setResults] = useState<Array<IPodcast> | null>(null);
   const [trending, setTrending] = useState<Array<IPodcast> | null>(null);
   const [subsData, setSubsData] = useState<Array<IPodcast> | null>(null);
-  const [show, setShow] = useState<number>(0);
+  const [show, setShow] = useState<boolean>(false);
   const [podcast, setPodcast] = useState<IPodcast | null>(null);
 
   const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
@@ -67,8 +68,7 @@ const Search: React.FC = () => {
   }, []);
 
   useEffect(() => {
-      if(subsData)
-         updateSubs(subsData.map((sub) => sub.id));
+    if (subsData) updateSubs(subsData.map((sub) => sub.id));
   }, [subsData]);
 
   useEffect(() => {
@@ -97,20 +97,25 @@ const Search: React.FC = () => {
 
   const handleClick: Function = (podcast: IPodcast) => {
     setPodcast(podcast);
-    setShow(1);
+    setShow(!show);
   };
 
   return (
     <StyledHome>
-      {show === 0 && (
+
+    { show && <button className="button-back" onClick={() => setShow(false)}>
+            <FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} />
+          </button>}
+      {!show && (
         <>
           <div className="search-wrapper">
-            <SearchBar onSearch={handleSearch} />
+            <SearchBar onSearch={handleSearch} />        
           </div>
+          { !results && trending && <h2>Trending Podcasts</h2>}
           <div className="result-wrapper">
+           
             {!results && trending && (
-              <>
-                <h3>Trending Podcasts</h3>
+              <div className="podcasts-wrapper">
                 <Podcasts
                   onClick={handleClick}
                   podcasts={trending}
@@ -119,20 +124,27 @@ const Search: React.FC = () => {
                     handleUnsubscribe(podcast)
                   }
                 />
-              </>
+              </div>
             )}
             {results && (
+                <div className="podcasts-wrapper">
               <Podcasts
                 onClick={handleClick}
                 podcasts={results}
                 subscribe={(podcast: IPodcast) => handleSubscribe(podcast)}
                 unsubscribe={(podcast: IPodcast) => handleUnsubscribe(podcast)}
               />
+                </div>
             )}
           </div>
         </>
       )}
-      { podcast && <Podcast podcast={podcast} />}
+
+      {show && podcast && (
+        <div className="podcast-wrapper">
+          <Podcast podcast={podcast} />
+        </div>
+      )}
     </StyledHome>
   );
 };
