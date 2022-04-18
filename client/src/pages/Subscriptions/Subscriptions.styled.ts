@@ -8,15 +8,12 @@ export const StyledSubscriptions = styled.div`
   height: 100%;
   min-height: 100vh;
   min-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
+  display: grid;
+  grid-template-rows: 20% 80% ;
+  
 
   h2 {
-    margin-top: 3rem;
-    margin-bottom: 5rem;
-  
+    margin: auto;
   }
   
 `;

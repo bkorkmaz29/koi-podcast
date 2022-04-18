@@ -1,27 +1,37 @@
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
-  display: flex;
-  padding: 0.5rem;
-  flex-direction: column;
-  align-items: center;
-  
-  height: 300px;
-  min-width: 0;
-  width: 300px;
-  background-color: ${({ theme }) => theme.grey};
+  background: linear-gradient(to bottom, #ffd021 5%, #e34427 100%);
+  background-color: #f16323;
+  width: 400px;
+  min-height: 100px;
+  margin: 1rem;
   border-radius: 9px;
-  margin: auto;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.1rem;
+
+  .card-wrapper {
+    background-color: ${({ theme }) => theme.grey};
+    width: 99%;
+
+    display: flex;
+    flex-direction: row;
+    border-radius: 9px;
+    margin: auto;
+  }
 
   .info-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: space-around;
     justify-content: center;
-    align-items: center;
     margin: auto;
-    width: 100%;
-    min-width: 0;
+    width: 80%;
+    min-height: 150px;
+    min-width: 200px;
 
     h1 {
       font-size: 0.9rem;
@@ -33,11 +43,29 @@ export const StyledCard = styled.div`
     }
 
     h3 {
-      font-size: 0.5rem;
+      font-size: 0.6rem;
       color: ${({ theme }) => theme.lightGrey};
       min-width: 0;
+      margin-top: 0;
+    }
+  }
+
+  .cat-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: center;
+    margin: auto;
+
+    .category {
+      color: ${({ theme }) => theme.orange};
+      background: none;
+      font-weight: bold;
+      border: 2px solid ${({ theme }) => theme.orange};
+      font-size: 0.7rem;
+      padding: 0.1rem;
       margin: auto;
-      padding: 2px;
+      border-radius: 9px;
     }
   }
 
@@ -45,7 +73,7 @@ export const StyledCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5px;
+    padding: 0.4rem;
     width: 60%;
     min-height: 60%;
     min-width: 150px;
@@ -57,27 +85,34 @@ export const StyledCard = styled.div`
       min-width: 0;
     }
   }
+
   .buttons-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     margin: auto;
-    padding: 1px;
+    padding: 0.5rem;
     width: 100%;
   }
 
   button {
     font-size: 0.7rem;
-    background: linear-gradient(to bottom, #f16323 5%, #ffd021 100%);
-    background-color: #f16323;
+    color: ${({ theme }) => theme.white};
+    background: none;
     border-radius: 9px;
+    border: 1px solid ${({ theme }) => theme.red};
     display: inline-block;
     cursor: pointer;
-    color: black;
+
     padding: 7px 16px;
     text-shadow: 0px 1px 0px #3d768a;
     margin-bottom: 0.3rem;
-    border: 1px solid #171717;
+
+    &:hover {
+      transition: all 0.3s linear;
+      background: ${({ theme }) => theme.red};
+      color: ${({ theme }) => theme.white};
+    }
   }
 `;

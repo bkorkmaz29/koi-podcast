@@ -31,8 +31,7 @@ export const StyledMenu = styled.nav<Props>`
     justify-content: center;
 
     a {
-      background: none;
-      
+      background: none;  
       font-size: 1rem;
       text-transform: uppercase;
       padding: 2rem 0;

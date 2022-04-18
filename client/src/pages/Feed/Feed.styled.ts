@@ -41,4 +41,8 @@ export const StyledFeed = styled.div`
   .logo {
     animation: rotation 5s infinite linear;
   }
+
+  img { 
+    width: 50%;
+  }
 `;

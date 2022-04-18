@@ -8,7 +8,7 @@ export interface User {
 export interface IPodcast {
   id: number;
   title: string;
-  ownerName: string;
+  author: string;
   description: string;
   image: string;
   link: string;

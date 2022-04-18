@@ -14,7 +14,6 @@ const SubsProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const deleteSub = (sub: number) => {
     const newSubs = subs.filter(element => element !== sub);
-    
     setSubs(newSubs)
   }
 

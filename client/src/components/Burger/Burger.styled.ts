@@ -19,6 +19,12 @@ export const StyledBurger = styled.div<Props>`
   cursor: pointer;
   padding: 0.8rem;
   z-index: 10;
+  transition: transform .4s;
+  
+  &:hover{
+    transform: scale(1.05);  
+  }
+
 
   .logo-wrapper {
     display: flex;

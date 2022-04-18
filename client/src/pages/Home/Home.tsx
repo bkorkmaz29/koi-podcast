@@ -8,11 +8,11 @@ import { SearchBar, Burger, Menu, Podcast, Podcasts } from "../../components";
 import { SubsContext } from "../../context/subsContext";
 
 const Search: React.FC = () => {
-  const [results, setResults] = useState<any>(false);
-  const [trending, setTrending] = useState<any>(false);
-  const [subsData, setSubsData] = useState<Array<any>>([]);
-  const [show, setShow] = useState<any>(0);
-  const [podcast, setPodcast] = useState<Number>(0);
+  const [results, setResults] = useState<Array<IPodcast> | null>(null);
+  const [trending, setTrending] = useState<Array<IPodcast> | null>(null);
+  const [subsData, setSubsData] = useState<Array<IPodcast> | null>(null);
+  const [show, setShow] = useState<number>(0);
+  const [podcast, setPodcast] = useState<IPodcast | null>(null);
 
   const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
 
@@ -67,7 +67,8 @@ const Search: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    updateSubs(subsData.map((sub) => sub.id));
+      if(subsData)
+         updateSubs(subsData.map((sub) => sub.id));
   }, [subsData]);
 
   useEffect(() => {
@@ -94,8 +95,8 @@ const Search: React.FC = () => {
       });
   };
 
-  const handleClick: Function = (id: Number) => {
-    setPodcast(id);
+  const handleClick: Function = (podcast: IPodcast) => {
+    setPodcast(podcast);
     setShow(1);
   };
 
@@ -131,7 +132,7 @@ const Search: React.FC = () => {
           </div>
         </>
       )}
-      {show === 1 && <Podcast id={podcast} />}
+      { podcast && <Podcast podcast={podcast} />}
     </StyledHome>
   );
 };

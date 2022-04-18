@@ -1,14 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { StyledSubscriptions } from "./Subscriptions.styled";
 import { Podcast, Podcasts } from "../../components";
 import { getCurrentUser, getCurrentUserId } from "../../services/authService";
+import { IPodcast, SubsContextType } from "../../models/models";
+import { SubsContext } from "../../context/subsContext";
+
 
 const Subscriptions: React.FC = () => {
   const [show, setShow] = useState<any>(0);
   const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
-  const [subs, setSubs] = useState<Array<JSON>>([]);
-  const [podcast, setPodcast] = useState<Number>(0);
+  const [subs, setSubs] = useState<Array<IPodcast>>([]);
+  const [podcast, setPodcast] = useState<IPodcast | null>(null);
+  const { updateSubs } = useContext(SubsContext) as SubsContextType;
 
   useEffect(() => {
     const getSubs = async () => {
@@ -28,6 +32,11 @@ const Subscriptions: React.FC = () => {
     getSubs();
   }, []);
 
+  useEffect(() => {
+    updateSubs(subs.map((sub) => sub.id));
+    
+  }, [subs]);
+
   const parseJSON = (data: Array<string>) => {
     var jsonArray: number[] = [];
 
@@ -38,12 +47,15 @@ const Subscriptions: React.FC = () => {
     return jsonArray;
   };
 
-  const handleClick: Function = (id: Number) => {
-    setPodcast(id);
+  const handleClick: Function = (podcast: IPodcast) => {
+    setPodcast(podcast);
     setShow(1);
   };
 
-  const handleUnsubscribe = async (podcast: any) => {
+  const handleUnsubscribe = async (podcast: IPodcast) => {
+
+    setSubs(subs.filter(sub => sub !== podcast))
+
     await axios
       .post(`http://localhost:5000/api/podcast/subscribe/cancel`, {
         userId: userId,
@@ -66,13 +78,15 @@ const Subscriptions: React.FC = () => {
   return (
     <StyledSubscriptions>
       <h2>My Podcasts</h2>
+      <div className="podcasts-wrapper">
       <Podcasts
         onClick={handleClick}
         podcasts={subs}
         subscribe={handleSubscribe}
         unsubscribe={handleUnsubscribe}
       />
-      {show === 1 && <Podcast id={podcast} />}
+      {podcast && <Podcast podcast={podcast} />}
+      </div>
     </StyledSubscriptions>
   );
 };

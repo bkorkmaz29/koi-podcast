@@ -33,5 +33,10 @@ export const StyledSearchBar = styled.form`
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
     font-size: 1.2rem;
+
+    &:hover {
+
+      opacity: 0.8;
+    }
   }
 `;

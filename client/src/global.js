@@ -10,6 +10,10 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  *,*:focus,*:hover{
+    outline:none;
+}
+
   body {
     display: flex;
     justify-content: center;
@@ -42,7 +46,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    color: ${({ theme }) => theme.primaryHover};
+    color: ${({ theme }) => theme.red};
     text-decoration: none;
   }
+
+  
 `;

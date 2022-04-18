@@ -6,15 +6,15 @@ import { StyledPodcast } from "./Podcast.styled";
 import { Episodes } from "../";
 
 interface IProps {
-  id: Number;
+  podcast: IPodcast;
 }
 
-const Podcast: React.FC<IProps> = ({ id }) => {
-  const [podcast, setPodcast] = useState<IPodcast>();
+const Podcast: React.FC<IProps> = ({ podcast }) => {
   const [episodes, setEpisodes] = useState<Array<Episode>>();
 
   useEffect(() => {
     const fetchData = async () => {
+      /*
       const responseInfo = await axios(
         `http://localhost:5000/api/podcast/byid`,
         {
@@ -26,12 +26,13 @@ const Podcast: React.FC<IProps> = ({ id }) => {
 
       const newPodcast: IPodcast = responseInfo.data.feed;
       setPodcast(newPodcast);
+        */
 
       const responseEpisodes = await axios(
         `http://localhost:5000/api/podcast/episodes`,
         {
           params: {
-            id: id,
+            id: podcast.id,
           },
         }
       );
@@ -40,28 +41,34 @@ const Podcast: React.FC<IProps> = ({ id }) => {
     };
 
     fetchData();
-  }, [id]);
+  }, [podcast.id]);
 
   return (
     <StyledPodcast>
       {podcast && (
-        <div className="podcast-card">
-          <div className="img-wrapper">
-            <img src={podcast.image} alt="Podcast" />
-          </div>
-          <div className="podcast-info">
-            <h1>{podcast.title}</h1>
-            <h3>by {podcast.ownerName}</h3>
-            <p> {podcast.episodeCount} episodes</p>
-            <div className="cat-wrapper">
-              {Object.values(podcast.categories).map((category, index) => (
-                <div key={index} className="category">{category}</div>
-              ))}
+        <div className="podcast-wrapper">
+          <div className="podcast-card">
+            <div className="img-wrapper">
+              <img src={podcast.image} alt="Podcast" />
             </div>
-            <a href={podcast.link}>Website</a>
+            <div className="podcast-info">
+              <h1>{podcast.title} </h1>
+              <h3>by {podcast.author}</h3>
+              <div className="cat-wrapper">
+                {Object.values(podcast.categories).map((category, index) => (
+                  <div key={index} className="category">
+                    {category}
+                  </div>
+                ))}
+              </div>
+              <p> {podcast.episodeCount} episodes</p>
+
+              <a href={podcast.link}>Website</a>
+            </div>
           </div>
         </div>
       )}
+
       {episodes && <Episodes episodes={episodes} />}
     </StyledPodcast>
   );
