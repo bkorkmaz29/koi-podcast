@@ -1,9 +1,7 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import axios from "axios";
 import { StyledHome } from "./Home.styled";
-import FocusLock from "react-focus-lock";
-import { useNavigate } from "react-router-dom";
-import { useOnClickOutside, useDisableBodyScroll } from "../../hooks";
+
 import { User, IPodcast, SubsContextType } from "../../models/models";
 import { getCurrentUser, getCurrentUserId } from "../../services/authService";
 import { SearchBar, Burger, Menu, Podcast, Podcasts } from "../../components";
@@ -12,18 +10,12 @@ import { SubsContext } from "../../context/subsContext";
 const Search: React.FC = () => {
   const [results, setResults] = useState<any>(false);
   const [trending, setTrending] = useState<any>(false);
-  const [subIds, setSubIds] = useState<Array<string>>([]);
   const [subsData, setSubsData] = useState<Array<any>>([]);
   const [show, setShow] = useState<any>(0);
   const [podcast, setPodcast] = useState<Number>(0);
-  const [open, setOpen] = useState<Boolean>(false);
-  const node = useRef<HTMLInputElement | null>(null);
-  const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
-  const [render, setRender] = useState<Boolean>(false);
 
-  useOnClickOutside(node, () => setOpen(false));
-  useDisableBodyScroll(open);
-  let navigate = useNavigate();
+  const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
+
   const { updateSubs } = useContext(SubsContext) as SubsContextType;
 
   const parseJSON = (data: Array<string>) => {
@@ -56,7 +48,6 @@ const Search: React.FC = () => {
       .catch((err) => console.error(err));
   };
 
-
   useEffect(() => {
     const getSubs = async () => {
       await axios
@@ -67,7 +58,7 @@ const Search: React.FC = () => {
         })
         .then((res) => {
           const subStr = res.data;
-          const json: any = parseJSON(subStr)
+          const json: any = parseJSON(subStr);
           setSubsData(json);
         });
     };
@@ -76,13 +67,8 @@ const Search: React.FC = () => {
   }, []);
 
   useEffect(() => {
-   
-      //setRender(!render)
-      updateSubs(subsData.map(sub => sub.id));
-
-    
-  }, [subsData])
-  
+    updateSubs(subsData.map((sub) => sub.id));
+  }, [subsData]);
 
   useEffect(() => {
     const getTrending = async () => {
@@ -95,11 +81,7 @@ const Search: React.FC = () => {
 
     getTrending();
   }, []);
-/*
-  useEffect(() => {
-    setSubsData(parseSubs());
-  }, [subIds]);
-*/
+
   const handleSearch = async (term: String) => {
     await axios
       .get(`http://localhost:5000/api/podcast/search`, {
@@ -116,32 +98,9 @@ const Search: React.FC = () => {
     setPodcast(id);
     setShow(1);
   };
-  const handleSubs: Function = (id: Number) => {
-    navigate("/subs");
-    window.location.reload();
-  };
-  
-
 
   return (
     <StyledHome>
-      <div className="nav" ref={node}>
-        <FocusLock disabled={!open}>
-          <div className="burger">
-            <Burger open={open} setOpen={setOpen} />
-          </div>
-          <div className="menu">
-            <Menu
-              open={open}
-              setOpen={setOpen}
-              setHome={() => setShow(0)}
-              setSubs={handleSubs}
-              setNew={() => setShow(3)}
-            />
-          </div>
-        </FocusLock>
-      </div>
-
       {show === 0 && (
         <>
           <div className="search-wrapper">
@@ -155,7 +114,9 @@ const Search: React.FC = () => {
                   onClick={handleClick}
                   podcasts={trending}
                   subscribe={(podcast: IPodcast) => handleSubscribe(podcast)}
-                  unsubscribe={(podcast: IPodcast) => handleUnsubscribe(podcast)}
+                  unsubscribe={(podcast: IPodcast) =>
+                    handleUnsubscribe(podcast)
+                  }
                 />
               </>
             )}
@@ -165,14 +126,12 @@ const Search: React.FC = () => {
                 podcasts={results}
                 subscribe={(podcast: IPodcast) => handleSubscribe(podcast)}
                 unsubscribe={(podcast: IPodcast) => handleUnsubscribe(podcast)}
-               
               />
             )}
           </div>
         </>
       )}
       {show === 1 && <Podcast id={podcast} />}
-     
     </StyledHome>
   );
 };

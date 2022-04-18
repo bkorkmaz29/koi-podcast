@@ -7,7 +7,6 @@ export const StyledSearchBar = styled.form`
   align-items: center;
   width: 30rem;
   height: 3rem;
- 
 
   input {
     width: 80%;
@@ -27,7 +26,7 @@ export const StyledSearchBar = styled.form`
     height: 100%;
     margin: auto;
     cursor: pointer;
-    background-color: #f3430c;
+    background-color: ${({ theme }) => theme.red};
     border: 1px solid #000;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -36,4 +35,3 @@ export const StyledSearchBar = styled.form`
     font-size: 1.2rem;
   }
 `;
-

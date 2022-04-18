@@ -8,29 +8,25 @@ export const StyledEpisodes = styled.div`
   width: 50%;
   margin: auto;
 
-
-.info { 
-    margin:auto;
+  .info {
+    margin: auto;
     background-color: #171717;
     width: 100%;
-    h1 { 
-        font-size: 0.80rem;
-        color: #ffd021;
+    h1 {
+      font-size: 0.8rem;
+      color: ${({ theme }) => theme.mango};
     }
 
-    p { 
-        font-size: 0.6rem;
-        color: #9a9a9a;
-    
+    p {
+      font-size: 0.6rem;
+      color: ${({ theme }) => theme.lightGrey};
     }
-}
-
-  .player { 
-      background-color:#171717;
-      margin:auto;
-      
   }
-  
+
+  .player {
+    color: ${({ theme }) => theme.grey};
+    margin: auto;
+  }
 `;
 
 export const StyledEpisodeCard = styled.div`
@@ -40,10 +36,8 @@ export const StyledEpisodeCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #171717;
+  background-color: ${({ theme }) => theme.grey};
   width: 100%;
   height: 8rem;
   padding: 1rem;
-  
-
 `;

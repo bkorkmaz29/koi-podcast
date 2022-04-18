@@ -6,11 +6,10 @@ import { StyledPodcast } from "./Podcast.styled";
 import { Episodes } from "../";
 
 interface IProps {
-
   id: Number;
 }
 
-const Podcast: React.FC<IProps> = ( {id} ) => {
+const Podcast: React.FC<IProps> = ({ id }) => {
   const [podcast, setPodcast] = useState<IPodcast>();
   const [episodes, setEpisodes] = useState<Array<Episode>>();
 
@@ -53,7 +52,12 @@ const Podcast: React.FC<IProps> = ( {id} ) => {
           <div className="podcast-info">
             <h1>{podcast.title}</h1>
             <h3>by {podcast.ownerName}</h3>
-            <p>{podcast.description}</p>
+            <p> {podcast.episodeCount} episodes</p>
+            <div className="cat-wrapper">
+              {Object.values(podcast.categories).map((category, index) => (
+                <div key={index} className="category">{category}</div>
+              ))}
+            </div>
             <a href={podcast.link}>Website</a>
           </div>
         </div>
@@ -63,4 +67,4 @@ const Podcast: React.FC<IProps> = ( {id} ) => {
   );
 };
 
-export default Podcast
+export default Podcast;

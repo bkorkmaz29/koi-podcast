@@ -9,7 +9,7 @@ export const StyledLoginForm = styled.form`
   width: 30%;
   height: 35%;
   min-width: 200px;
-  background-color: #171717;
+  background-color: ${({ theme }) => theme.grey};
   border-radius: 9px;
 
   input[type="text"] {
@@ -48,8 +48,8 @@ export const StyledLoginForm = styled.form`
 
   .signup-button {
     margin: 1rem;
-    color: #ffd021;
-    background-color: #171717;
+    color: ${({ theme }) => theme.mango};
+    background-color: ${({ theme }) => theme.grey};
   }
 
   .login-button {

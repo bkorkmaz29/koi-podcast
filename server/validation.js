@@ -17,4 +17,4 @@ const loginValidation = (data) => {
   return schema.validate(data);
 };
 
-export {registerValidation, loginValidation }
+export { registerValidation, loginValidation };

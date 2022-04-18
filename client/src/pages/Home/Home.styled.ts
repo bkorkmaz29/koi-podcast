@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHome = styled.div`
-  background-color: black;
+  background-color: ${({ theme }) => theme.black};;
   position: absolute;
   top: 0;
   left:0;

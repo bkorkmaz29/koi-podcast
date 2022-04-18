@@ -38,7 +38,6 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  
   // Validation
   const { err } = loginValidation(req.body);
   if (err) return res.status(400).send(error.details[0].message);
@@ -54,7 +53,6 @@ router.post("/login", async (req, res) => {
   //Create and assign token
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   res.header("auth-token", token).send(token);
-
 });
 
 export default router;

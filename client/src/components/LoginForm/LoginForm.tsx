@@ -26,7 +26,7 @@ const LoginForm: React.FC<Props> = ({ onLogin, onSignUp }) => {
 
   return (
     <StyledLoginForm onSubmit={onSubmit}>
-    <h2>Log In</h2>
+      <h2>Log In</h2>
       <div className="form-input">
         <label>Email</label>
         <input
@@ -48,8 +48,12 @@ const LoginForm: React.FC<Props> = ({ onLogin, onSignUp }) => {
           <input type="checkbox" />
           <label>Remember Me</label>
         </div>
-        <button className="login-button" type="submit" value="Login">Sign In</button>
-        <button className="signup-button" onClick={onSignUp}>No account? Sign Up!</button>
+        <button className="login-button" type="submit" value="Login">
+          Sign In
+        </button>
+        <button className="signup-button" onClick={onSignUp}>
+          No account? Sign Up!
+        </button>
       </div>
     </StyledLoginForm>
   );

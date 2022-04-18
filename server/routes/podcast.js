@@ -43,18 +43,14 @@ router.get("/byid", async (req, res) => {
     );
 });
 
-
 router.get("/trending", async (req, res) => {
   const headers = getHeader();
 
   await axios
-    .get(
-      `https://api.podcastindex.org/api/1.0/podcasts/trending?pretty`,
-      {
-        headers: headers,
-        params: {max: 6}
-      }
-    )
+    .get(`https://api.podcastindex.org/api/1.0/podcasts/trending?pretty`, {
+      headers: headers,
+      params: { max: 6 },
+    })
     .then(
       (response) => {
         res.send(response.data);
@@ -64,7 +60,6 @@ router.get("/trending", async (req, res) => {
       }
     );
 });
-
 
 router.get("/episodes", async (req, res) => {
   const id = req.query.id;
@@ -89,10 +84,13 @@ router.get("/episodes", async (req, res) => {
 
 router.post("/subscribe", async (req, res) => {
   const podcast = req.body.podcast;
-  var podcastStr = JSON.stringify(podcast)
+  var podcastStr = JSON.stringify(podcast);
   const userId = req.body.userId;
 
-  await User.updateOne({ _id: userId }, { $push: { subscriptions: podcastStr } }).then(
+  await User.updateOne(
+    { _id: userId },
+    { $push: { subscriptions: podcastStr } }
+  ).then(
     () => {
       res.send("Subscribed");
     },
@@ -100,13 +98,11 @@ router.post("/subscribe", async (req, res) => {
       console.log(error);
     }
   );
-
-
 });
 
 router.get("/subscribe", async (req, res) => {
   const userId = req.query.userId;
-  
+
   await User.findOne({ _id: userId }).then(
     (user) => {
       res.send(user.subscriptions);
@@ -117,13 +113,15 @@ router.get("/subscribe", async (req, res) => {
   );
 });
 
-
 router.post("/subscribe/cancel", async (req, res) => {
   const podcast = req.body.podcast;
-  var podcastStr = JSON.stringify(podcast)
+  var podcastStr = JSON.stringify(podcast);
   const userId = req.body.userId;
 
-  await User.updateOne({ _id: userId }, { $pull: { subscriptions: podcastStr } }).then(
+  await User.updateOne(
+    { _id: userId },
+    { $pull: { subscriptions: podcastStr } }
+  ).then(
     () => {
       res.send("Subscribed");
     },

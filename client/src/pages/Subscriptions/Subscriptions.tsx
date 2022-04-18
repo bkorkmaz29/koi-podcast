@@ -1,4 +1,4 @@
-import { useState, useEffect  } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { StyledSubscriptions } from "./Subscriptions.styled";
 import { Podcast, Podcasts } from "../../components";
@@ -9,6 +9,7 @@ const Subscriptions: React.FC = () => {
   const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
   const [subs, setSubs] = useState<Array<JSON>>([]);
   const [podcast, setPodcast] = useState<Number>(0);
+
   useEffect(() => {
     const getSubs = async () => {
       await axios
@@ -19,7 +20,7 @@ const Subscriptions: React.FC = () => {
         })
         .then((res) => {
           const subStr = res.data;
-          const json: any = parseJSON(subStr)
+          const json: any = parseJSON(subStr);
           setSubs(json);
         });
     };
@@ -37,28 +38,20 @@ const Subscriptions: React.FC = () => {
     return jsonArray;
   };
 
-
-
-
-
   const handleClick: Function = (id: Number) => {
     setPodcast(id);
-     setShow(1);
-   };
-   
+    setShow(1);
+  };
 
-   const handleUnsubscribe = async (podcast: any) => {
+  const handleUnsubscribe = async (podcast: any) => {
     await axios
       .post(`http://localhost:5000/api/podcast/subscribe/cancel`, {
         userId: userId,
         podcast: podcast,
       })
       .then(() => console.log("Subscribed"))
-      //.then(() => saveSub(podcast.id))
       .catch((err) => console.error(err));
   };
-
-
 
   const handleSubscribe = async (podcast: JSON) => {
     await axios
@@ -67,22 +60,21 @@ const Subscriptions: React.FC = () => {
         podcast: podcast,
       })
       .then(() => console.log("Subscribed"))
-      //.then(() => saveSub(podcast.id))
       .catch((err) => console.error(err));
   };
 
-
-  
-
   return (
     <StyledSubscriptions>
-        <h2 >My Podcasts</h2>
-
-        <Podcasts onClick={handleClick} podcasts={subs} subscribe={handleSubscribe} unsubscribe={handleUnsubscribe}  />
-        {show === 1 && <Podcast id={podcast} />}
-        
+      <h2>My Podcasts</h2>
+      <Podcasts
+        onClick={handleClick}
+        podcasts={subs}
+        subscribe={handleSubscribe}
+        unsubscribe={handleUnsubscribe}
+      />
+      {show === 1 && <Podcast id={podcast} />}
     </StyledSubscriptions>
-  )
-}
+  );
+};
 
-export default Subscriptions
+export default Subscriptions;
