@@ -18,6 +18,12 @@ export const StyledLoginForm = styled.form`
     height: 2rem;
   }
 
+  input[type="password"] {
+    border-radius: 4px;
+    width: 20rem;
+    height: 2rem;
+  }
+
   input[type="submit"] {
     border-radius: 4px;
     width: 5rem;
@@ -50,6 +56,7 @@ export const StyledLoginForm = styled.form`
     margin: 1rem;
     color: ${({ theme }) => theme.mango};
     background-color: ${({ theme }) => theme.grey};
+    border: none;
   }
 
   .login-button {
@@ -71,16 +78,10 @@ export const StyledLoginForm = styled.form`
 
   label {
     margin-bottom: 0.25rem;
+    color: ${({ theme }) => theme.white};
   }
-`;
 
-export const LoginButton = styled.input`
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  width: 3rem;
-  height: 2rem;
-  background-color: white;
-  border-radius: 4px;
-  margin: 1rem;
+  h2 { 
+    color: ${({ theme }) => theme.white};
+  }
 `;

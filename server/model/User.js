@@ -24,9 +24,8 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
 
-  subscriptions: {
-    idNumbers: [Number],
-  },
+  subscriptions: [String]
+
 });
 
 export default mongoose.model("User", userSchema);

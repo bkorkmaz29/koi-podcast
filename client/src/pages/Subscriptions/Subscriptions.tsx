@@ -1,20 +1,36 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import { StyledSubscriptions } from "./Subscriptions.styled";
-import { Podcast, Podcasts } from "../../components";
+import { Podcast, Podcasts, Nav } from "../../components";
 import { getCurrentUser, getCurrentUserId } from "../../services/authService";
-import { IPodcast, SubsContextType } from "../../models/models";
-import { SubsContext } from "../../context/subsContext";
+import { IPodcast, UserContextType } from "../../models/models";
+import { UserContext } from "../../context/userContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons'
-
+import { useOnClickOutside } from "../../hooks";
 
 const Subscriptions: React.FC = () => {
   const [show, setShow] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
   const [subs, setSubs] = useState<Array<IPodcast>>([]);
   const [podcast, setPodcast] = useState<IPodcast | null>(null);
-  const { updateSubs } = useContext(SubsContext) as SubsContextType;
+  const { updateSubs } = useContext(UserContext) as UserContextType;
+  const node = useRef<any>(null);
+  useOnClickOutside(node, () => setOpen(false));
+
+
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (!userId) {
+      navigate("/");
+    }
+    
+    
+  }, [userId])
+  
 
   useEffect(() => {
     const getSubs = async () => {
@@ -77,12 +93,11 @@ const Subscriptions: React.FC = () => {
       .catch((err) => console.error(err));
   };
 
-  const handleBack = () => {
-    setShow(false);
-  };
-
   return (
     <StyledSubscriptions>
+      <div  ref={node} className="nav-wrapper">
+       <Nav setOpen={setOpen} open={open}/>
+       </div>
      {!show && <h2>My Podcasts</h2> }
      {show && <button className="button-back" onClick = {() => setShow(false)}><FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} /></button> }
       <div className="podcasts-wrapper">

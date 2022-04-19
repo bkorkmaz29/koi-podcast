@@ -46,10 +46,11 @@ export const StyledRegisterForm = styled.form`
     margin: auto;
   }
 
-  .signup-button {
+  .login-button {
     margin: 1rem;
     color: #FFD021;
     background-color: #171717;
+    border: none;
   }
 
   .register-button {
@@ -71,7 +72,11 @@ export const StyledRegisterForm = styled.form`
 
   label{
     margin-bottom: 0.25rem;
+    color: ${({ theme }) => theme.white};
 }
+  h2 { 
+    color: ${({ theme }) => theme.white};
+  }
 `;
 
 export const LoginButton = styled.input`

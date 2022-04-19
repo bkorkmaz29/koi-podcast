@@ -6,8 +6,8 @@ interface Props {
 
 export const StyledBurger = styled.div<Props>`
   position: absolute;
-  top: 30px;
-  left: 2rem;
+  top: 2rem;
+  left: 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -20,12 +20,16 @@ export const StyledBurger = styled.div<Props>`
   padding: 0.8rem;
   z-index: 10;
   transition: transform .4s;
-  
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+    top: 2rem;
+    left: 25vw;
+      }
+
   &:hover{
     transform: scale(1.05);  
   }
 
-
+ 
   .logo-wrapper {
     display: flex;
     margin: auto;

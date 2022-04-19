@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-import { SubsContextType } from '../models/models';
+import { UserContextType, User } from '../models/models';
 
-export const SubsContext = React.createContext<SubsContextType | null>(null);
+export const UserContext = React.createContext<UserContextType | null>(null);
 
-const SubsProvider: React.FC<React.ReactNode> = ({ children }) => {
+const UserProvider: React.FC<React.ReactNode> = ({ children }) => {
+  const [user, setUser] = React.useState<User | null>(null);
   const [subs, setSubs] = React.useState<Array<number>>([]);
 
   const saveSub = (sub: number) => {
@@ -25,10 +26,10 @@ const SubsProvider: React.FC<React.ReactNode> = ({ children }) => {
   }
 
   return (
-    <SubsContext.Provider value={{ subs, saveSub, deleteSub ,updateSubs }}>
+    <UserContext.Provider value={{ user, subs, saveSub, deleteSub , updateSubs }}>
       {children}
-    </SubsContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export default SubsProvider;
+export default UserProvider;

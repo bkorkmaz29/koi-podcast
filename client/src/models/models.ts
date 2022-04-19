@@ -2,7 +2,6 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  subs: Array<number>;
 }
 
 export interface IPodcast {
@@ -25,7 +24,8 @@ export interface Episode {
   date: string;
 }
 
-export type SubsContextType = {
+export type UserContextType = {
+  user: User | null;
   subs: Array<number>;
   saveSub: (sub: number) => void;
   deleteSub: (sub: number) => void;

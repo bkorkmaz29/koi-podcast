@@ -6,25 +6,28 @@ import { LoginForm, RegisterForm } from "../../components";
 import { User } from "../../models/models";
 import { loginService, registerService }from "../../services/authService";
 
+
 const Login: React.FC = () => {
   const [register, setRegister] = useState<boolean>(false);
   let navigate = useNavigate();
 
   const handleLogin = (user: User) => {
-  
+
+    //setLoggedIn(true)
       loginService(user).then(
         () => {
+          
           navigate("/home");
-          window.location.reload();
+          //window.location.reload();
         }
       );
   };
   
   const handleRegister = (user: User) => {
   
-    loginService(user).then(
+    registerService(user).then(
       () => {
-        navigate("/login");
+        navigate("/");
         window.location.reload();
       }
     );
@@ -42,7 +45,7 @@ const Login: React.FC = () => {
         {register && (
           <RegisterForm
             onLogin={() => setRegister(!register)}
-            onRegister={handleLogin}
+            onRegister={handleRegister}
           />
         )}
       </div>

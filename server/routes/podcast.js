@@ -3,6 +3,7 @@ import axios from "axios";
 
 import User from "../model/User.js";
 import { getHeader } from "../middleware/getHeader.js";
+import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
 

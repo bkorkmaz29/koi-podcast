@@ -72,12 +72,10 @@ export const StyledCard = styled.div`
     margin: auto;
 
     .category {
-      color: ${({ theme }) => theme.orange};
-      background: none;
+      background-color: ${({ theme }) => theme.orange};
       font-weight: bold;
-      border: 2px solid ${({ theme }) => theme.orange};
       font-size: 0.7rem;
-      padding: 0.1rem;
+      padding: 0.2rem;
       margin: auto;
       border-radius: 9px;
     }

@@ -1,31 +1,45 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { StyledHome } from "./Home.styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { User, IPodcast, SubsContextType } from "../../models/models";
-import { getCurrentUser, getCurrentUserId } from "../../services/authService";
-import { SearchBar, Burger, Menu, Podcast, Podcasts } from "../../components";
-import { SubsContext } from "../../context/subsContext";
+import { useNavigate } from "react-router-dom";
+
+import { User, IPodcast, UserContextType } from "../../models/models";
+import { getCurrentUserId } from "../../services/authService";
+import { SearchBar, Podcast, Podcasts, Nav } from "../../components";
+import { UserContext } from "../../context/userContext";
+import { useOnClickOutside, useDisableBodyScroll } from "../../hooks";
 
 const Search: React.FC = () => {
+  const node = useRef<any>(null);
+
   const [results, setResults] = useState<Array<IPodcast> | null>(null);
   const [trending, setTrending] = useState<Array<IPodcast> | null>(null);
   const [subsData, setSubsData] = useState<Array<IPodcast> | null>(null);
   const [show, setShow] = useState<boolean>(false);
   const [podcast, setPodcast] = useState<IPodcast | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
+  const [userId, setUserId] = useState<number>(getCurrentUserId()._id);
 
-  const [userId, setUserId] = useState<Number | null>(getCurrentUserId()._id);
+  const { user, updateSubs } = useContext(UserContext) as UserContextType;
+  useOnClickOutside(node, () => setOpen(false));
 
-  const { updateSubs } = useContext(SubsContext) as SubsContextType;
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (userId === 0) {
+      navigate("/");
+    }
+  }, [userId]);
 
   const parseJSON = (data: Array<string>) => {
     var jsonArray: number[] = [];
-
-    data.forEach((element, index) => {
-      const json = JSON.parse(element);
-      jsonArray = [...jsonArray, json];
-    });
+    if (data.length > 0) {
+      data.forEach((element, index) => {
+        const json = JSON.parse(element);
+        jsonArray = [...jsonArray, json];
+      });
+    }
     return jsonArray;
   };
 
@@ -95,25 +109,28 @@ const Search: React.FC = () => {
       });
   };
 
-  const handleClick: Function = (podcast: IPodcast) => {
+  const handleClick = (podcast: IPodcast) => {
     setPodcast(podcast);
     setShow(!show);
   };
 
   return (
     <StyledHome>
-
-    { show && <button className="button-back" onClick={() => setShow(false)}>
-            <FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} />
-          </button>}
+      <div ref={node} className="nav-wrapper">
+        <Nav setOpen={setOpen} open={open} />
+      </div>
+      {show && (
+        <button className="button-back" onClick={() => setShow(false)}>
+          <FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} />
+        </button>
+      )}
       {!show && (
         <>
           <div className="search-wrapper">
-            <SearchBar onSearch={handleSearch} />        
+            <SearchBar onSearch={handleSearch} />
           </div>
-          { !results && trending && <h2>Trending Podcasts</h2>}
+          {!results && trending && <h2>Trending Podcasts</h2>}
           <div className="result-wrapper">
-           
             {!results && trending && (
               <div className="podcasts-wrapper">
                 <Podcasts
@@ -127,14 +144,16 @@ const Search: React.FC = () => {
               </div>
             )}
             {results && (
-                <div className="podcasts-wrapper">
-              <Podcasts
-                onClick={handleClick}
-                podcasts={results}
-                subscribe={(podcast: IPodcast) => handleSubscribe(podcast)}
-                unsubscribe={(podcast: IPodcast) => handleUnsubscribe(podcast)}
-              />
-                </div>
+              <div className="podcasts-wrapper">
+                <Podcasts
+                  onClick={handleClick}
+                  podcasts={results}
+                  subscribe={(podcast: IPodcast) => handleSubscribe(podcast)}
+                  unsubscribe={(podcast: IPodcast) =>
+                    handleUnsubscribe(podcast)
+                  }
+                />
+              </div>
             )}
           </div>
         </>

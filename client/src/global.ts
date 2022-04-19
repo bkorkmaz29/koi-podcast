@@ -6,9 +6,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;    
   }
 
-  body::-webkit-scrollbar {
-      display: none;
-}
+
 
   *, *::after, *::before {
     box-sizing: border-box;
@@ -25,8 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
     text-rendering: optimizeLegibility;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    
   }
 
   h1 {

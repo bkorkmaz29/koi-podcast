@@ -1,7 +1,7 @@
 import { StyledCard } from "./PodcastCard.styled";
 import { Info } from "..";
-import { IPodcast, SubsContextType } from "../../models/models";
-import { SubsContext } from "../../context/subsContext";
+import { IPodcast, UserContextType } from "../../models/models";
+import { UserContext } from "../../context/userContext";
 import { useContext, useEffect, useState } from "react";
 
 interface Props {
@@ -18,8 +18,8 @@ const PodcastCard: React.FC<Props> = ({
   unsubscribe,
 }) => {
   const { subs, saveSub, deleteSub } = useContext(
-    SubsContext
-  ) as SubsContextType;
+    UserContext
+  ) as UserContextType;
   const [subbed, setSubbed] = useState(false);
 
   const checkSub = () => {
@@ -63,7 +63,7 @@ const PodcastCard: React.FC<Props> = ({
           <h1>{podcast.title}</h1>
           <h3>by {podcast.author} </h3>
           <div className="cat-wrapper">
-            {podcast.categories && Object.values(podcast.categories).length < 5 && Object.values(podcast.categories).map((category, index) => (
+            {podcast.categories && Object.values(podcast.categories).slice(0, 3).map((category, index) => (
               <div key={index} className="category">
                 {category}
               </div>
