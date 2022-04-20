@@ -6,7 +6,11 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 import { User, IPodcast, UserContextType } from "../../models/models";
-import { getCurrentUserId } from "../../services/authService";
+import {
+  getCurrentUser,
+  getCurrentUserId,
+  getHeaders,
+} from "../../services/authService";
 import { SearchBar, Podcast, Podcasts, Nav } from "../../components";
 import { UserContext } from "../../context/userContext";
 import { useOnClickOutside, useDisableBodyScroll } from "../../hooks";
@@ -23,9 +27,13 @@ const Search: React.FC = () => {
   const [userId, setUserId] = useState<number>(getCurrentUserId()._id);
 
   const { user, updateSubs } = useContext(UserContext) as UserContextType;
+
   useOnClickOutside(node, () => setOpen(false));
 
+  const headers = getHeaders();
+
   let navigate = useNavigate();
+
   useEffect(() => {
     if (userId === 0) {
       navigate("/");
@@ -44,21 +52,34 @@ const Search: React.FC = () => {
   };
 
   const handleSubscribe = async (podcast: IPodcast) => {
+
     await axios
-      .post(`http://localhost:5000/api/podcast/subscribe`, {
-        userId: userId,
-        podcast: podcast,
-      })
+      .post(
+        `http://localhost:5000/api/podcast/subscribe`,
+        {
+          userId: userId,
+          podcast: podcast,
+        },
+        {
+           headers: headers 
+        }
+      )
       .then(() => console.log("Subscribed"))
       .catch((err) => console.error(err));
   };
 
   const handleUnsubscribe = async (podcast: IPodcast) => {
     await axios
-      .post(`http://localhost:5000/api/podcast/subscribe/cancel`, {
-        userId: userId,
-        podcast: podcast,
-      })
+      .post(
+        `http://localhost:5000/api/podcast/subscribe/cancel`,
+        {
+          userId: userId,
+          podcast: podcast,
+        },
+        { 
+          headers: headers 
+        }
+      )
       .then(() => console.log("Unsubscribed"))
       .catch((err) => console.error(err));
   };
@@ -67,6 +88,7 @@ const Search: React.FC = () => {
     const getSubs = async () => {
       await axios
         .get(`http://localhost:5000/api/podcast/subscribe`, {
+          headers: headers,
           params: {
             userId: userId,
           },
@@ -88,7 +110,9 @@ const Search: React.FC = () => {
   useEffect(() => {
     const getTrending = async () => {
       await axios
-        .get(`http://localhost:5000/api/podcast/trending`)
+        .get(`http://localhost:5000/api/podcast/trending`, {
+          headers: headers,
+        })
         .then((res) => {
           setTrending(res.data.feeds);
         });
@@ -100,6 +124,7 @@ const Search: React.FC = () => {
   const handleSearch = async (term: String) => {
     await axios
       .get(`http://localhost:5000/api/podcast/search`, {
+        headers: headers,
         params: {
           term: term,
         },
@@ -115,10 +140,12 @@ const Search: React.FC = () => {
   };
 
   return (
-    <StyledHome>
+    <StyledHome open={open}>
+
       <div ref={node} className="nav-wrapper">
         <Nav setOpen={setOpen} open={open} />
       </div>
+
       {show && (
         <button className="button-back" onClick={() => setShow(false)}>
           <FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} />
@@ -131,7 +158,7 @@ const Search: React.FC = () => {
           </div>
           {!results && trending && <h2>Trending Podcasts</h2>}
           <div className="result-wrapper">
-            {!results && trending && (
+          {!results && trending && (
               <div className="podcasts-wrapper">
                 <Podcasts
                   onClick={handleClick}

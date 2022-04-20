@@ -11,7 +11,8 @@ export const StyledMenu = styled.nav<Props>`
   align-items: center;
   background: ${({ theme }) => theme.white};
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
-  height: 100%;
+  transform: ${({ open }) => (open ? "translateY(0)" : "translateX(-100%)")};
+  height: 100vh;
   width: 300px;
   text-align: left;
   padding: 2rem;
@@ -21,9 +22,15 @@ export const StyledMenu = styled.nav<Props>`
   transition: transform 0.3s ease-in-out;
   z-index: 2;
 
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    width: 100%;
-  }
+
+
+    @media (max-width: ${({ theme }) => theme.tablet}) {
+      font-size: 1.5rem;
+      width: 100vw;
+      
+    }
+
+
 
   .button-wrapper {
     display: flex;
@@ -37,13 +44,14 @@ export const StyledMenu = styled.nav<Props>`
       padding: 2rem 0;
       font-weight: bold;
       letter-spacing: 0.5rem;
-      color: ${({ theme }) => theme.primaryDark};
+      color: ${({ theme }) => theme.black};
       cursor: pointer;
       transition: color 0.3s linear;
 
       @media (max-width: ${({ theme }) => theme.mobile}) {
         font-size: 1.5rem;
         text-align: center;
+
       }
 
       &:hover {

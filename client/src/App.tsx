@@ -1,4 +1,3 @@
-import { useState, useRef } from "react";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 

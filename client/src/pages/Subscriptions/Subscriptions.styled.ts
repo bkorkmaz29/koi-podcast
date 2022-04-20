@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledSubscriptions = styled.div`
+interface Props {
+  readonly open: boolean;
+}
+
+export const StyledSubscriptions = styled.div<Props>`
   background-color: ${({ theme }) => theme.black};
   position: absolute;
   left: 0;
@@ -9,25 +13,36 @@ export const StyledSubscriptions = styled.div`
   min-width: 100vw;
 
   display: grid;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 0fr 2fr;
 
   .nav-wrapper {
     position: absolute;
     left: 0;
     top: 0;
-    height: 100vh;
+    height: 0;
+    height: ${({ open }) => (open ? "100vh" : "0vh")};
+    font-size: 1.5rem;
 
 
-    @media (max-width: ${({ theme }) => theme.mobile}) {
+    @media (min-width: ${({ theme }) => theme.smobile}) {
       width: 100vw;
-      font-size: 1.5rem;
-      text-align: center;
+      
     }
+
   }
 
   h2 {
-    margin: auto;
+
     color: ${({ theme }) => theme.white};
+    margin: 3em auto;
+
+    @media (min-width: ${({ theme }) => theme.smobile}) {
+        margin: 4.5em auto 1em;
+      }
+    @media (min-width: ${({ theme }) => theme.mobile}) {
+        margin: 4.5em auto 1em;
+      }
+ 
   }
 
   .button-back {
@@ -41,6 +56,23 @@ export const StyledSubscriptions = styled.div`
     cursor: pointer;
     transition: transform 0.4s;
     transition: all 0.3s linear;
+
+    @media (min-width: ${({ theme }) => theme.smobile}) {
+        margin: 3em auto 1em;
+      }
+    @media (min-width: ${({ theme }) => theme.mobile}) {
+        margin: 3em auto 1em;
+      }
+      @media (min-width: ${({ theme }) => theme.tablet}) {
+        margin: 2em auto 1em;
+      }
+      @media (min-width: ${({ theme }) => theme.laptop}) {
+        margin: 2em auto 1em;
+      }
+      @media (min-width: ${({ theme }) => theme.desktop}) {
+        margin: 2em auto 1em;
+      }
+
     &:hover {
       color: ${({ theme }) => theme.orange};
       transform: scale(1.2);

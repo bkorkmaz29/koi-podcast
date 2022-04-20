@@ -124,7 +124,7 @@ router.post("/subscribe/cancel", async (req, res) => {
     { $pull: { subscriptions: podcastStr } }
   ).then(
     () => {
-      res.send("Subscribed");
+      res.send("Unsubscribed");
     },
     (error) => {
       console.log(error);

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { StyledSubscriptions } from "./Subscriptions.styled";
 import { Podcast, Podcasts, Nav } from "../../components";
-import { getCurrentUser, getCurrentUserId } from "../../services/authService";
+import { getCurrentUser, getCurrentUserId, getHeaders } from "../../services/authService";
 import { IPodcast, UserContextType } from "../../models/models";
 import { UserContext } from "../../context/userContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,8 +18,10 @@ const Subscriptions: React.FC = () => {
   const [subs, setSubs] = useState<Array<IPodcast>>([]);
   const [podcast, setPodcast] = useState<IPodcast | null>(null);
   const { updateSubs } = useContext(UserContext) as UserContextType;
+
   const node = useRef<any>(null);
   useOnClickOutside(node, () => setOpen(false));
+  const headers = getHeaders();
 
 
   let navigate = useNavigate();
@@ -36,6 +38,7 @@ const Subscriptions: React.FC = () => {
     const getSubs = async () => {
       await axios
         .get(`http://localhost:5000/api/podcast/subscribe`, {
+          headers: headers,
           params: {
             userId: userId,
           },
@@ -71,30 +74,40 @@ const Subscriptions: React.FC = () => {
   };
 
   const handleUnsubscribe = async (podcast: IPodcast) => {
-
     setSubs(subs.filter(sub => sub !== podcast))
-
     await axios
-      .post(`http://localhost:5000/api/podcast/subscribe/cancel`, {
-        userId: userId,
-        podcast: podcast,
-      })
+      .post(
+        `http://localhost:5000/api/podcast/subscribe/cancel`,
+        {
+          userId: userId,
+          podcast: podcast,
+        },
+        { 
+          headers: headers 
+        }
+      )
+      .then(() => console.log("Unsubscribed"))
+      .catch((err) => console.error(err));
+  };
+  const handleSubscribe = async (podcast: IPodcast) => {
+    await axios
+      .post(
+        `http://localhost:5000/api/podcast/subscribe`,
+        {
+          userId: userId,
+          podcast: podcast,
+        },
+        {
+           headers: headers 
+        }
+      )
       .then(() => console.log("Subscribed"))
       .catch((err) => console.error(err));
   };
 
-  const handleSubscribe = async (podcast: JSON) => {
-    await axios
-      .post(`http://localhost:5000/api/podcast/subscribe`, {
-        userId: userId,
-        podcast: podcast,
-      })
-      .then(() => console.log("Subscribed"))
-      .catch((err) => console.error(err));
-  };
 
   return (
-    <StyledSubscriptions>
+    <StyledSubscriptions open={open}>
       <div  ref={node} className="nav-wrapper">
        <Nav setOpen={setOpen} open={open}/>
        </div>

@@ -7,12 +7,19 @@ export const StyledSearchBar = styled.form`
   align-items: center;
   width: 30rem;
   height: 3rem;
+  margin: auto;
+
+  @media (max-width: ${({ theme }) => theme.tablet}) {
+      margin-top: 4rem ;
+      width: 20rem;
+
+    }
 
   input {
     width: 80%;
     height: 100%;
     max-width: 500px;
-    font-size: 24px;
+    font-size: 1.5em;
     padding: 5px;
     border-top-left-radius: 9px;
     border-bottom-left-radius: 9px;
@@ -33,7 +40,7 @@ export const StyledSearchBar = styled.form`
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
     font-size: 1.2rem;
-
+    
     &:hover {
 
       opacity: 0.8;

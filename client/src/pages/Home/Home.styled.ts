@@ -1,28 +1,34 @@
 import styled from "styled-components";
 
-export const StyledHome = styled.div`
+interface Props {
+  readonly open: boolean;
+}
+
+export const StyledHome = styled.div<Props>`
   background-color: ${({ theme }) => theme.black};
   position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
+  left: 0;
   min-height: 100vh;
   min-width: 100vw;
   display: grid;
   grid-template-rows: 0fr 0fr 2fr;
-  padding: 2rem;
+  padding: 2em;
 
   .nav-wrapper {
     position: absolute;
     left: 0;
     top: 0;
-    height: 100vh;
+    height: 0;
+    height: ${({ open }) => (open ? "100vh" : "0vh")};
+    font-size: 1.5rem;
 
-    @media (max-width: ${({ theme }) => theme.mobile}) {
+    @media (min-width: ${({ theme }) => theme.smobile}) {
       width: 100vw;
-      font-size: 1.5rem;
-      text-align: center;
+      
     }
+
+
   }
 
   .podcasts-wrapper {
@@ -49,21 +55,35 @@ export const StyledHome = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    padding: 2rem;
+    padding: 2em;
+
+    @media (min-width: ${({ theme }) => theme.mobile}) {
+      margin: 2rem auto 0 ;
+    }
+
+    @media (min-width: ${({ theme }) => theme.tablet}) {
+      margin: 3rem auto 0 ;
+    }
+
+
+    @media (min-width: ${({ theme }) => theme.desktop}) {
+      margin: auto;
+    }
+
   }
 
   .result-wrapper {
     margin: auto;
-    padding: 2rem;
+    padding: 2em;
   }
 
   .button-back {
-    font-size: 2.2rem;
+    font-size: 2.2em;
     margin: auto;
 
     background: none;
     border: none;
-    padding: 1rem;
+    padding: 1em;
     color: ${({ theme }) => theme.white};
     cursor: pointer;
     transition: transform 0.4s;
@@ -72,6 +92,22 @@ export const StyledHome = styled.div`
       color: ${({ theme }) => theme.orange};
       transform: scale(1.2);
     }
+
+    @media (min-width: ${({ theme }) => theme.smobile}) {
+        margin: 2em auto 0;
+      }
+    @media (min-width: ${({ theme }) => theme.mobile}) {
+        margin: 2em auto 0;
+      }
+      @media (min-width: ${({ theme }) => theme.tablet}) {
+        margin: auto ;
+      }
+      @media (min-width: ${({ theme }) => theme.laptop}) {
+        margin: auto ;
+      }
+      @media (min-width: ${({ theme }) => theme.desktop}) {
+        margin: auto ;
+      }
   }
 
   h2 {
@@ -89,8 +125,8 @@ export const StyledHome = styled.div`
       }
     }
     color: ${({ theme }) => theme.white};
-    margin: auto;
-    padding: 0.5rem;
-    font-size: 1.5rem;
+    margin: 0 auto 0;
+    padding: 0.5em;
+    font-size: 1.5em;
   }
 `;

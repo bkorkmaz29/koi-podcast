@@ -38,7 +38,7 @@ const LoginForm: React.FC<Props> = ({ onLogin, onSignUp }) => {
       <div className="form-input">
         <label>Password</label>
         <input
-          type="text"
+          type="password"
           placeholder="Enter Password"
           onChange={(e) => setPassword(e.target.value)}
         />

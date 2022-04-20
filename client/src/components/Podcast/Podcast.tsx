@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import { getHeaders } from "../../services/authService";
 import { IPodcast, Episode } from "../../models/models";
 import { StyledPodcast } from "./Podcast.styled";
 import { Episodes, PodcastCard } from "../";
@@ -9,28 +9,17 @@ interface IProps {
   podcast: IPodcast;
 }
 
-const Podcast: React.FC<IProps> = ({ podcast}) => {
+const Podcast: React.FC<IProps> = ({ podcast }) => {
   const [episodes, setEpisodes] = useState<Array<Episode>>();
+
+  const headers = getHeaders();
 
   useEffect(() => {
     const fetchData = async () => {
-      /*
-      const responseInfo = await axios(
-        `http://localhost:5000/api/podcast/byid`,
-        {
-          params: {
-            id: id,
-          },
-        }
-      );
-
-      const newPodcast: IPodcast = responseInfo.data.feed;
-      setPodcast(newPodcast);
-        */
-
       const responseEpisodes = await axios(
         `http://localhost:5000/api/podcast/episodes`,
         {
+          headers: headers,
           params: {
             id: podcast.id,
           },
@@ -43,35 +32,34 @@ const Podcast: React.FC<IProps> = ({ podcast}) => {
     fetchData();
   }, [podcast.id]);
 
- 
   return (
     <StyledPodcast>
       {podcast && (
-        <div className="podcast-wrapper">
-          <div className="podcast-card">
-            <div className="img-wrapper">
-              <img src={podcast.image} alt="Podcast" />
-            </div>
-            <div className="podcast-info">
-              <h1>{podcast.title} </h1>
-              <h3>by {podcast.author}</h3>
-              <div className="cat-wrapper">
-                {Object.values(podcast.categories).map((category, index) => (
-                  <div key={index} className="category">
-                    {category}
-                  </div>
-                ))}
+        <div className="container">
+          <div className="podcast-wrapper">
+            <div className="podcast-card">
+              <div className="img-wrapper">
+                <img src={podcast.image} alt="Podcast" />
               </div>
-              <p> {podcast.description}</p>
-            
-      
+              <div className="podcast-info">
+                <h1>{podcast.title} </h1>
+                <h3>by {podcast.author}</h3>
+                <div className="cat-wrapper">
+                  {Object.values(podcast.categories).map((category, index) => (
+                    <div key={index} className="category">
+                      {category}
+                    </div>
+                  ))}
+                </div>
+                <p> {podcast.description}</p>
+              </div>
             </div>
-   
+          </div>
+          <div className="episodes-wrapper">
+            {episodes && <Episodes episodes={episodes} />}
           </div>
         </div>
       )}
-
-      {episodes && <Episodes episodes={episodes} />}
     </StyledPodcast>
   );
 };

@@ -37,12 +37,21 @@ export const getCurrentUserId = () => {
           return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
         })
         .join("")
-    )
+    );
     return JSON.parse(jsonPayload);
   }
-      
-        
-    return 0;
+
+  return 0;
+};
+
+export const getHeaders = () => {
+  const token = getCurrentUser();
+  if (token) {
+    const headers = { "auth-token": token };
+    return headers;
+  }
+
+  return  {"auth-token": 0};
 };
 
 export const registerService = async (RegisterUser: User) => {

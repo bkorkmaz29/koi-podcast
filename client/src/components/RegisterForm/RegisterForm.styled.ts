@@ -4,32 +4,31 @@ import styled from 'styled-components';
 export const StyledRegisterForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: auto;
-  width: 30%;
-  height: 35%;
-  min-width: 200px;
-  background-color: #171717;  
+  max-width: 25em;
+  max-height: 30em;
+  background-color: ${({ theme }) => theme.grey};
   border-radius: 9px;
 
   input[type="text"] {
     border-radius: 4px;
-    width: 20rem;
-    height: 2rem;
+    width: 20em;
+    height: 2em;
   }
 
   input[type="submit"] {
     border-radius: 4px;
-    width: 5rem;
-    height: 2rem;
+    width: 5em;
+    height: 2em;
   }
   
   .form-input {
     display: flex;
     flex-direction: column;
     align-items: start; 
-    margin: 0.5rem;
+    margin: 0.5em;
   }
 
   .form-buttons {
@@ -37,7 +36,7 @@ export const StyledRegisterForm = styled.form`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin: 1rem;
+    margin: 1em;
     width: 100%;
     height: 500px;
   }
@@ -47,14 +46,14 @@ export const StyledRegisterForm = styled.form`
   }
 
   .login-button {
-    margin: 1rem;
+    margin: 1em;
     color: #FFD021;
-    background-color: #171717;
+    background-color: ${({ theme }) => theme.grey};
     border: none;
   }
 
   .register-button {
-    box-shadow: 0px 10px 14px -7px #276873;
+  box-shadow: 0px 10px 14px -7px #276873;
 	background:linear-gradient(to bottom, #F16323 5%, #FFD021 100%);
 	background-color:#F16323;
 	border-radius:8px;
@@ -62,16 +61,16 @@ export const StyledRegisterForm = styled.form`
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:1rem;
+	font-size:1em;
 	font-weight:bold;
 	padding:13px 32px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
-    margin: 1rem;
+    margin: 1em;
   }
 
   label{
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.25em;
     color: ${({ theme }) => theme.white};
 }
   h2 { 
@@ -83,10 +82,10 @@ export const LoginButton = styled.input`
   display: flex;
   justify-content: center;
   cursor: pointer;
-  width: 3rem;
-  height: 2rem;
+  width: 3em;
+  height: 2em;
   background-color: white;  
   border-radius: 4px;
-  margin: 1rem;
+  margin: 1em;
 `;
 

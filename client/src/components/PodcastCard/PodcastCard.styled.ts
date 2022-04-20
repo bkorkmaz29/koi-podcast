@@ -17,15 +17,47 @@ export const StyledCard = styled.div`
 
   background: linear-gradient(to bottom, #ffd021 5%, #e34427 100%);
   background-color: #f16323;
-  width: 25rem;
+
   min-height: 100px;
-  margin: 1rem;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.1rem;
+  padding: 0.1em;
+
+  
+  
+    @media (min-width: ${({ theme }) => theme.smobile}) {
+      width: 20em;
+    }
+
+    @media (min-width: ${({ theme }) => theme.mobile}) {
+      width: 22em;
+    }
+
+    @media (min-width: ${({ theme }) => theme.tablet}) {
+      width: 23em;
+    }
+
+    @media (min-width: ${({ theme }) => theme.laptop}) {
+      width: 24em;
+    }
+
+    @media (min-width: ${({ theme }) => theme.desktop}) {
+      width: 25em;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
   .card-wrapper {
     background-color: ${({ theme }) => theme.grey};
@@ -127,4 +159,7 @@ export const StyledCard = styled.div`
       color: ${({ theme }) => theme.white};
     }
   }
+
+
+
 `;
