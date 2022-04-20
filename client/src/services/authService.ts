@@ -47,7 +47,7 @@ export const getCurrentUserId = () => {
 export const getHeaders = () => {
   const token = getCurrentUser();
   if (token) {
-    const headers = { "auth-token": token };
+    const headers = {"auth-token": token };
     return headers;
   }
 

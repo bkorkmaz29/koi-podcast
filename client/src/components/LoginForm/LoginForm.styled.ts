@@ -53,6 +53,7 @@ export const StyledLoginForm = styled.form`
   }
 
   .signup-button {
+    cursor: pointer;
     margin: 1em;
     color: ${({ theme }) => theme.mango};
     background-color: ${({ theme }) => theme.grey};

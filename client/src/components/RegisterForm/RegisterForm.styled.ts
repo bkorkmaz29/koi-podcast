@@ -51,6 +51,7 @@ export const StyledRegisterForm = styled.form`
   }
 
   .login-button {
+    cursor: pointer;
     margin: 1em;
     color: #ffd021;
     background-color: ${({ theme }) => theme.grey};

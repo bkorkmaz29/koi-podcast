@@ -23,25 +23,20 @@ export const StyledSubscriptions = styled.div<Props>`
     height: ${({ open }) => (open ? "100vh" : "0vh")};
     font-size: 1.5rem;
 
-
     @media (min-width: ${({ theme }) => theme.smobile}) {
       width: 100vw;
-      
     }
-
   }
 
   h2 {
-
     color: ${({ theme }) => theme.white};
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
-        margin: 4.5em auto 2em;
-      }
+      margin: 4.5em auto 2em;
+    }
     @media (min-width: ${({ theme }) => theme.mobile}) {
-        margin: 4.5em auto 2em;
-      }
- 
+      margin: 4.5em auto 2em;
+    }
   }
 
   .button-back {
@@ -57,20 +52,20 @@ export const StyledSubscriptions = styled.div<Props>`
     transition: all 0.3s linear;
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
-        margin: 3em auto 1em;
-      }
+      margin: 3em auto 1em;
+    }
     @media (min-width: ${({ theme }) => theme.mobile}) {
-        margin: 3em auto 1em;
-      }
-      @media (min-width: ${({ theme }) => theme.tablet}) {
-        margin: 2em auto 1em;
-      }
-      @media (min-width: ${({ theme }) => theme.laptop}) {
-        margin: 2em auto 1em;
-      }
-      @media (min-width: ${({ theme }) => theme.desktop}) {
-        margin: 2em auto 1em;
-      }
+      margin: 3em auto 1em;
+    }
+    @media (min-width: ${({ theme }) => theme.tablet}) {
+      margin: 2em auto 1em;
+    }
+    @media (min-width: ${({ theme }) => theme.laptop}) {
+      margin: 2em auto 1em;
+    }
+    @media (min-width: ${({ theme }) => theme.desktop}) {
+      margin: 2em auto 1em;
+    }
 
     &:hover {
       color: ${({ theme }) => theme.orange};
