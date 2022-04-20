@@ -34,13 +34,12 @@ export const StyledSubscriptions = styled.div<Props>`
   h2 {
 
     color: ${({ theme }) => theme.white};
-    margin: 3em auto;
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
-        margin: 4.5em auto 1em;
+        margin: 4.5em auto 2em;
       }
     @media (min-width: ${({ theme }) => theme.mobile}) {
-        margin: 4.5em auto 1em;
+        margin: 4.5em auto 2em;
       }
  
   }
