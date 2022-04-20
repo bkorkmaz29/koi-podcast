@@ -25,10 +25,7 @@ export const StyledHome = styled.div<Props>`
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
       width: 100vw;
-      
     }
-
-
   }
 
   .podcasts-wrapper {
@@ -58,18 +55,16 @@ export const StyledHome = styled.div<Props>`
     padding: 2em;
 
     @media (min-width: ${({ theme }) => theme.mobile}) {
-      margin: 2rem auto 0 ;
+      margin: 2rem auto 0;
     }
 
     @media (min-width: ${({ theme }) => theme.tablet}) {
-      margin: 3rem auto 0 ;
+      margin: 3rem auto 0;
     }
-
 
     @media (min-width: ${({ theme }) => theme.desktop}) {
       margin: auto;
     }
-
   }
 
   .result-wrapper {
@@ -94,20 +89,20 @@ export const StyledHome = styled.div<Props>`
     }
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
-        margin: 2em auto 0;
-      }
+      margin: 2em auto 0;
+    }
     @media (min-width: ${({ theme }) => theme.mobile}) {
-        margin: 2em auto 0;
-      }
-      @media (min-width: ${({ theme }) => theme.tablet}) {
-        margin: auto ;
-      }
-      @media (min-width: ${({ theme }) => theme.laptop}) {
-        margin: auto ;
-      }
-      @media (min-width: ${({ theme }) => theme.desktop}) {
-        margin: auto ;
-      }
+      margin: 2em auto 0;
+    }
+    @media (min-width: ${({ theme }) => theme.tablet}) {
+      margin: auto;
+    }
+    @media (min-width: ${({ theme }) => theme.laptop}) {
+      margin: auto;
+    }
+    @media (min-width: ${({ theme }) => theme.desktop}) {
+      margin: auto;
+    }
   }
 
   h2 {

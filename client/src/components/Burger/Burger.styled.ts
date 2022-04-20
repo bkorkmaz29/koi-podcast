@@ -5,7 +5,6 @@ interface Props {
 }
 
 export const StyledBurger = styled.div<Props>`
-  
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -17,42 +16,37 @@ export const StyledBurger = styled.div<Props>`
   cursor: pointer;
   padding: 0.8rem;
   z-index: 10;
-  transition: transform .4s;
-
+  transition: transform 0.4s;
 
   @media (min-width: ${({ theme }) => theme.smobile}) {
     position: relative;
-    margin: 1rem auto ;
-    }
-
+    margin: 1rem auto;
+  }
 
   @media (min-width: ${({ theme }) => theme.mobile}) {
     position: relative;
-    margin: 1rem auto ;
-    }
-
-    @media (min-width: ${({ theme }) => theme.tablet}) {
-      position: relative;
-      margin: 1rem 1rem ;
-    }
-
-    @media (min-width: ${({ theme }) => theme.laptop}) {
-      position: relative;
-      margin: 1rem 1rem ;
-    }
-
-    @media (min-width: ${({ theme }) => theme.desktop}) {
-      position: relative;
-    margin: 1rem 1rem ;
-    }
-
-
-
-  &:hover{
-    transform: scale(1.05);  
+    margin: 1rem auto;
   }
 
- 
+  @media (min-width: ${({ theme }) => theme.tablet}) {
+    position: relative;
+    margin: 1rem 1rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.laptop}) {
+    position: relative;
+    margin: 1rem 1rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.desktop}) {
+    position: relative;
+    margin: 1rem 1rem;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
   .logo-wrapper {
     display: flex;
     margin: auto;
@@ -97,8 +91,7 @@ export const StyledBurger = styled.div<Props>`
     span {
       width: 2rem;
       height: 0.25rem;
-      background: ${({ theme, open }) =>
-        open ? theme.black : theme.white};
+      background: ${({ theme, open }) => (open ? theme.black : theme.white)};
       border-radius: 10px;
       transition: all 0.3s linear;
       position: relative;

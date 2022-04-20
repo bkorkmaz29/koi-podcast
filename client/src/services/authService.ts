@@ -3,7 +3,7 @@ import { User } from "../models/models";
 
 export const loginService = async (loginUser: User) => {
   await axios
-    .post(`http://localhost:5000/api/user/login`, {
+    .post(`https://koi-pod.herokuapp.com/api/user/login`, {
       email: loginUser.email,
       password: loginUser.password,
     })
@@ -55,7 +55,7 @@ export const getHeaders = () => {
 };
 
 export const registerService = async (RegisterUser: User) => {
-  await axios.post(`http://localhost:5000/api/user/register`, {
+  await axios.post(`https://koi-pod.herokuapp.com/api/user/register`, {
     name: RegisterUser.name,
     email: RegisterUser.email,
     password: RegisterUser.password,

@@ -37,7 +37,7 @@ const Subscriptions: React.FC = () => {
   useEffect(() => {
     const getSubs = async () => {
       await axios
-        .get(`http://localhost:5000/api/podcast/subscribe`, {
+        .get(`https://koi-pod.herokuapp.com/api/podcast/subscribe`, {
           headers: headers,
           params: {
             userId: userId,
@@ -77,7 +77,7 @@ const Subscriptions: React.FC = () => {
     setSubs(subs.filter(sub => sub !== podcast))
     await axios
       .post(
-        `http://localhost:5000/api/podcast/subscribe/cancel`,
+        `https://koi-pod.herokuapp.com/api/podcast/subscribe/cancel`,
         {
           userId: userId,
           podcast: podcast,
@@ -92,7 +92,7 @@ const Subscriptions: React.FC = () => {
   const handleSubscribe = async (podcast: IPodcast) => {
     await axios
       .post(
-        `http://localhost:5000/api/podcast/subscribe`,
+        `https://koi-pod.herokuapp.com/api/podcast/subscribe`,
         {
           userId: userId,
           podcast: podcast,

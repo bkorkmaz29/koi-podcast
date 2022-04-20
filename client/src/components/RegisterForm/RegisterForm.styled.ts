@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const StyledRegisterForm = styled.form`
   display: flex;
@@ -18,16 +17,22 @@ export const StyledRegisterForm = styled.form`
     height: 2em;
   }
 
+  input[type="password"] {
+    border-radius: 4px;
+    width: 20em;
+    height: 2em;
+  }
+
   input[type="submit"] {
     border-radius: 4px;
     width: 5em;
     height: 2em;
   }
-  
+
   .form-input {
     display: flex;
     flex-direction: column;
-    align-items: start; 
+    align-items: start;
     margin: 0.5em;
   }
 
@@ -47,33 +52,33 @@ export const StyledRegisterForm = styled.form`
 
   .login-button {
     margin: 1em;
-    color: #FFD021;
+    color: #ffd021;
     background-color: ${({ theme }) => theme.grey};
     border: none;
   }
 
   .register-button {
-  box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #F16323 5%, #FFD021 100%);
-	background-color:#F16323;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:1em;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3d768a;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background: linear-gradient(to bottom, #f16323 5%, #ffd021 100%);
+    background-color: #f16323;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 13px 32px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #3d768a;
     margin: 1em;
   }
 
-  label{
+  label {
     margin-bottom: 0.25em;
     color: ${({ theme }) => theme.white};
-}
-  h2 { 
+  }
+  h2 {
     color: ${({ theme }) => theme.white};
   }
 `;
@@ -84,8 +89,7 @@ export const LoginButton = styled.input`
   cursor: pointer;
   width: 3em;
   height: 2em;
-  background-color: white;  
+  background-color: white;
   border-radius: 4px;
   margin: 1em;
 `;
-

@@ -52,16 +52,15 @@ const Search: React.FC = () => {
   };
 
   const handleSubscribe = async (podcast: IPodcast) => {
-
     await axios
       .post(
-        `http://localhost:5000/api/podcast/subscribe`,
+        `https://koi-pod.herokuapp.com/api/podcast/subscribe`,
         {
           userId: userId,
           podcast: podcast,
         },
         {
-           headers: headers 
+          headers: headers,
         }
       )
       .then(() => console.log("Subscribed"))
@@ -71,13 +70,13 @@ const Search: React.FC = () => {
   const handleUnsubscribe = async (podcast: IPodcast) => {
     await axios
       .post(
-        `http://localhost:5000/api/podcast/subscribe/cancel`,
+        `https://koi-pod.herokuapp.com/api/podcast/subscribe/cancel`,
         {
           userId: userId,
           podcast: podcast,
         },
-        { 
-          headers: headers 
+        {
+          headers: headers,
         }
       )
       .then(() => console.log("Unsubscribed"))
@@ -87,7 +86,7 @@ const Search: React.FC = () => {
   useEffect(() => {
     const getSubs = async () => {
       await axios
-        .get(`http://localhost:5000/api/podcast/subscribe`, {
+        .get(`https://koi-pod.herokuapp.com/api/podcast/subscribe`, {
           headers: headers,
           params: {
             userId: userId,
@@ -110,7 +109,7 @@ const Search: React.FC = () => {
   useEffect(() => {
     const getTrending = async () => {
       await axios
-        .get(`http://localhost:5000/api/podcast/trending`, {
+        .get(`https://koi-pod.herokuapp.com/api/podcast/trending`, {
           headers: headers,
         })
         .then((res) => {
@@ -123,7 +122,7 @@ const Search: React.FC = () => {
 
   const handleSearch = async (term: String) => {
     await axios
-      .get(`http://localhost:5000/api/podcast/search`, {
+      .get(`https://koi-pod.herokuapp.com/api/podcast/search`, {
         headers: headers,
         params: {
           term: term,
@@ -141,7 +140,6 @@ const Search: React.FC = () => {
 
   return (
     <StyledHome open={open}>
-
       <div ref={node} className="nav-wrapper">
         <Nav setOpen={setOpen} open={open} />
       </div>
@@ -158,7 +156,7 @@ const Search: React.FC = () => {
           </div>
           {!results && trending && <h2>Trending Podcasts</h2>}
           <div className="result-wrapper">
-          {!results && trending && (
+            {!results && trending && (
               <div className="podcasts-wrapper">
                 <Podcasts
                   onClick={handleClick}

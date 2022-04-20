@@ -22,15 +22,10 @@ export const StyledMenu = styled.nav<Props>`
   transition: transform 0.3s ease-in-out;
   z-index: 2;
 
-
-
-    @media (max-width: ${({ theme }) => theme.tablet}) {
-      font-size: 1.5rem;
-      width: 100vw;
-      
-    }
-
-
+  @media (max-width: ${({ theme }) => theme.tablet}) {
+    font-size: 1.5rem;
+    width: 100vw;
+  }
 
   .button-wrapper {
     display: flex;
@@ -38,7 +33,7 @@ export const StyledMenu = styled.nav<Props>`
     justify-content: center;
 
     a {
-      background: none;  
+      background: none;
       font-size: 1rem;
       text-transform: uppercase;
       padding: 2rem 0;
@@ -51,7 +46,6 @@ export const StyledMenu = styled.nav<Props>`
       @media (max-width: ${({ theme }) => theme.mobile}) {
         font-size: 1.5rem;
         text-align: center;
-
       }
 
       &:hover {

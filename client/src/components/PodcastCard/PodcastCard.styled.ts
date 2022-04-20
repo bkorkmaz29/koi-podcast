@@ -26,38 +26,25 @@ export const StyledCard = styled.div`
   align-items: center;
   padding: 0.1em;
 
-  
-  
-    @media (min-width: ${({ theme }) => theme.smobile}) {
-      width: 20em;
-    }
+  @media (min-width: ${({ theme }) => theme.smobile}) {
+    width: 20em;
+  }
 
-    @media (min-width: ${({ theme }) => theme.mobile}) {
-      width: 22em;
-    }
+  @media (min-width: ${({ theme }) => theme.mobile}) {
+    width: 22em;
+  }
 
-    @media (min-width: ${({ theme }) => theme.tablet}) {
-      width: 23em;
-    }
+  @media (min-width: ${({ theme }) => theme.tablet}) {
+    width: 23em;
+  }
 
-    @media (min-width: ${({ theme }) => theme.laptop}) {
-      width: 24em;
-    }
+  @media (min-width: ${({ theme }) => theme.laptop}) {
+    width: 24em;
+  }
 
-    @media (min-width: ${({ theme }) => theme.desktop}) {
-      width: 25em;
-    }
-
-
-
-
-
-
-
-
-
-
-
+  @media (min-width: ${({ theme }) => theme.desktop}) {
+    width: 25em;
+  }
 
   .card-wrapper {
     background-color: ${({ theme }) => theme.grey};
@@ -159,7 +146,4 @@ export const StyledCard = styled.div`
       color: ${({ theme }) => theme.white};
     }
   }
-
-
-
 `;

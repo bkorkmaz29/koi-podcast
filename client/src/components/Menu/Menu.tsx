@@ -7,13 +7,13 @@ interface Props {
 const Menu: React.FC<Props> = ({ open }) => {
   return (
     <FocusLock disabled={!open}>
-    <StyledMenu open={open}>
-      <div className="button-wrapper">
-        <a href="/home"> Home </a>
-        <a href="/subs"> My Podcasts </a>
-        <a href="/feed"> New Episodes </a>
-      </div>
-    </StyledMenu>
+      <StyledMenu open={open}>
+        <div className="button-wrapper">
+          <a href="/home"> Home </a>
+          <a href="/subs"> My Podcasts </a>
+          <a href="/feed"> New Episodes </a>
+        </div>
+      </StyledMenu>
     </FocusLock>
   );
 };

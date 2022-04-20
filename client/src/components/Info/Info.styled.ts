@@ -8,9 +8,7 @@ export const StyledInfo = styled.div`
   align-items: center;
   font-family: "Verdana";
   font-weight: bold;
-   width: 50%;
-  
-
+  width: 50%;
   background-color: #171717;
 
   h1 {

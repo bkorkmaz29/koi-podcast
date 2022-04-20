@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface Props {
-  readonly listen: boolean
+  readonly listen: boolean;
 }
 
 export const StyledEpisodes = styled.div`

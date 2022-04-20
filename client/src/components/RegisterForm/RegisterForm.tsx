@@ -28,8 +28,8 @@ const RegisterForm: React.FC<Props> = ({ onRegister, onLogin }) => {
 
   return (
     <StyledRegisterForm onSubmit={onSubmit}>
-    <h2>Register</h2>
-    <div className="form-input">
+      <h2>Register</h2>
+      <div className="form-input">
         <label>Username</label>
         <input
           type="text"
@@ -48,14 +48,18 @@ const RegisterForm: React.FC<Props> = ({ onRegister, onLogin }) => {
       <div className="form-input">
         <label>Password</label>
         <input
-          type="text"
+          type="password"
           placeholder="Enter Password"
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className="form-buttons">
-        <button className="register-button" type="submit" value="Register">Sign Up</button>
-        <button className="login-button" onClick={onLogin}>Log in with your account</button>
+        <button className="register-button" type="submit" value="Register">
+          Sign Up
+        </button>
+        <button className="login-button" onClick={onLogin}>
+          Log in with your account
+        </button>
       </div>
     </StyledRegisterForm>
   );

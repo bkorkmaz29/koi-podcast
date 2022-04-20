@@ -10,8 +10,8 @@ export const StyledHeader = styled.div`
   width: 100%;
   height: 150px;
   max-height: 100px;
-  background-color: #171717;
-  border-bottom: 2px solid #ffd021;
+  background-color: ${({ theme }) => theme.grey};
+  border-bottom: 2px solid ${({ theme }) => theme.mango};
 `;
 
 export const LogoWrapper = styled.div`
@@ -25,6 +25,7 @@ export const LogoWrapper = styled.div`
   font-family: "Major Mono Display", monospace;
   font-weight: bold;
   font-size: 1.5rem;
+  color: ${({ theme }) => theme.white};
 
   img {
     max-width: 100%;

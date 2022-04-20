@@ -63,11 +63,14 @@ const PodcastCard: React.FC<Props> = ({
           <h1>{podcast.title}</h1>
           <h3>by {podcast.author} </h3>
           <div className="cat-wrapper">
-            {podcast.categories && Object.values(podcast.categories).slice(0, 3).map((category, index) => (
-              <div key={index} className="category">
-                {category}
-              </div>
-            ))}
+            {podcast.categories &&
+              Object.values(podcast.categories)
+                .slice(0, 3)
+                .map((category, index) => (
+                  <div key={index} className="category">
+                    {category}
+                  </div>
+                ))}
           </div>
           <div className="buttons-wrapper">
             <button onClick={handleClick}> listen </button>
