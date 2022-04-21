@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(verifyToken);
+app.use(verifyToken());
 app.use("/api/user", authRoute);
 app.use("/api/podcast", podRoute);
 

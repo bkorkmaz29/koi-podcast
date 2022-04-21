@@ -37,7 +37,7 @@ const Search: React.FC = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (userId === 0) {
+    if (!userId) {
       navigate("/");
     }
   }, [userId]);
