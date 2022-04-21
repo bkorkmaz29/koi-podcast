@@ -2,6 +2,12 @@
 
 Podcast directory made with MERN stack using Podcast Index API.
 
+### [Live Demo](https://koi-podcast.vercel.app/)
+**Test account**<br>  email = "test<span>@t</span>est.com" <br> password = "testtest"
+
+
+![ss2](https://user-images.githubusercontent.com/68343982/164351712-edc9b3ec-5308-4859-91f4-0c680b2cc843.jpg)
+
 ## Functionalities
 
 - User can register and log in to their account.
@@ -11,14 +17,14 @@ Podcast directory made with MERN stack using Podcast Index API.
 
 ## Technical
 
-### Frontend
+### Front end
 
 - Typescript
 - React
 - React Router Dom
 - Styled Components
 
-### Backend
+### Back end
 
 - Javascript
 - Node.js
@@ -27,6 +33,7 @@ Podcast directory made with MERN stack using Podcast Index API.
 
 ## TODO
 
+- ❌ Typescript back end.
 - ❌ Landing page.
 - ❌ Profile page and updating user information.
 - ❌ New episodes page where use can see new episodes of their subscriptions. 
