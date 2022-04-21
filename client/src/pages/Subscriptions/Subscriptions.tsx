@@ -22,7 +22,8 @@ const Subscriptions: React.FC = () => {
   const node = useRef<any>(null);
   useOnClickOutside(node, () => setOpen(false));
   const headers = getHeaders();
-
+  //const API_URL = "http://localhost:5000"
+  const API_URL = "https://koi-pod.herokuapp.com"
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -37,7 +38,7 @@ const Subscriptions: React.FC = () => {
   useEffect(() => {
     const getSubs = async () => {
       await axios
-        .get(`https://koi-pod.herokuapp.com/api/podcast/subscribe`, {
+        .get(`${API_URL}/api/podcast/subscribe`, {
           headers: headers,
           params: {
             userId: userId,
@@ -77,7 +78,7 @@ const Subscriptions: React.FC = () => {
     setSubs(subs.filter(sub => sub !== podcast))
     await axios
       .post(
-        `https://koi-pod.herokuapp.com/api/podcast/subscribe/cancel`,
+        `${API_URL}/api/podcast/subscribe/cancel`,
         {
           userId: userId,
           podcast: podcast,
@@ -92,7 +93,7 @@ const Subscriptions: React.FC = () => {
   const handleSubscribe = async (podcast: IPodcast) => {
     await axios
       .post(
-        `https://koi-pod.herokuapp.com/api/podcast/subscribe`,
+        `${API_URL}/api/podcast/subscribe`,
         {
           userId: userId,
           podcast: podcast,

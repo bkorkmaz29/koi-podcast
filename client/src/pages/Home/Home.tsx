@@ -14,6 +14,8 @@ import {
 import { SearchBar, Podcast, Podcasts, Nav } from "../../components";
 import { UserContext } from "../../context/userContext";
 import { useOnClickOutside, useDisableBodyScroll } from "../../hooks";
+//const API_URL = "http://localhost:5000"
+const API_URL = "https://koi-pod.herokuapp.com"
 
 const Search: React.FC = () => {
   const node = useRef<any>(null);
@@ -54,7 +56,7 @@ const Search: React.FC = () => {
   const handleSubscribe = async (podcast: IPodcast) => {
     await axios
       .post(
-        `https://koi-pod.herokuapp.com/api/podcast/subscribe`,
+        `${API_URL}/api/podcast/subscribe`,
         {
           userId: userId,
           podcast: podcast,
@@ -70,7 +72,7 @@ const Search: React.FC = () => {
   const handleUnsubscribe = async (podcast: IPodcast) => {
     await axios
       .post(
-        `https://koi-pod.herokuapp.com/api/podcast/subscribe/cancel`,
+        `${API_URL}/api/podcast/subscribe/cancel`,
         {
           userId: userId,
           podcast: podcast,
@@ -86,7 +88,7 @@ const Search: React.FC = () => {
   useEffect(() => {
     const getSubs = async () => {
       await axios
-        .get(`https://koi-pod.herokuapp.com/api/podcast/subscribe`, {
+        .get(`${API_URL}/api/podcast/subscribe`, {
           headers: headers,
           params: {
             userId: userId,
@@ -109,7 +111,7 @@ const Search: React.FC = () => {
   useEffect(() => {
     const getTrending = async () => {
       await axios
-        .get(`https://koi-pod.herokuapp.com/api/podcast/trending`, {
+        .get(`${API_URL}/api/podcast/trending`, {
           headers: headers,
         })
         .then((res) => {
@@ -122,7 +124,7 @@ const Search: React.FC = () => {
 
   const handleSearch = async (term: String) => {
     await axios
-      .get(`https://koi-pod.herokuapp.com/api/podcast/search`, {
+      .get(`${API_URL}/api/podcast/search`, {
         headers: headers,
         params: {
           term: term,
