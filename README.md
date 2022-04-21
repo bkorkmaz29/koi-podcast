@@ -13,14 +13,14 @@ Podcast directory made with MERN stack using Podcast Index API.
 
 ## Technical
 
-### Frontend
+### Front end
 
 - Typescript
 - React
 - React Router Dom
 - Styled Components
 
-### Backend
+### Back end
 
 - Javascript
 - Node.js
