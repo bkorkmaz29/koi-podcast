@@ -2,6 +2,10 @@
 
 Podcast directory made with MERN stack using Podcast Index API.
 
+### [Live Demo](https://koi-podcast.vercel.app/)
+**Test account**<br>  email = "test<span>@t</span>est.com" <br> password = "testtest"
+
+
 ![ss2](https://user-images.githubusercontent.com/68343982/164351712-edc9b3ec-5308-4859-91f4-0c680b2cc843.jpg)
 
 ## Functionalities
