@@ -9,7 +9,7 @@ export const theme = {
   black: "#000",
   grey: "#171717",
   lightGrey: "#9a9a9a",
-  smobile: "360px" ,
+  smobile: "240px" ,
   mobile: "480px",
   tablet: "768px" ,
   laptop: "1024px" ,

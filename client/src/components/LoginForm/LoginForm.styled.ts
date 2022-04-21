@@ -8,6 +8,7 @@ export const StyledLoginForm = styled.form`
   margin: auto;
   max-width: 25em;
   max-height: 30em;
+  min-width: 0;
   background-color: ${({ theme }) => theme.grey};
   border-radius: 9px;
   padding: 1em;
