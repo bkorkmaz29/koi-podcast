@@ -33,6 +33,7 @@ Podcast directory made with MERN stack using Podcast Index API.
 
 ## TODO
 
+- ❌ Typescript back end.
 - ❌ Landing page.
 - ❌ Profile page and updating user information.
 - ❌ New episodes page where use can see new episodes of their subscriptions. 
