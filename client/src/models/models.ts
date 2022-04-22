@@ -18,10 +18,10 @@ export interface IPodcast {
 }
 
 export interface Episode {
-  id: number;
-  title: string;
-  listen: string;
-  date: string;
+  title: string,
+  datePublishedPretty: string,
+  enclosureUrl: string
+
 }
 
 export type UserContextType = {

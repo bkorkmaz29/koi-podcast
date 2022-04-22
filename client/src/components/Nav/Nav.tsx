@@ -1,10 +1,11 @@
+import { Dispatch, SetStateAction } from "react";
 import FocusLock from "react-focus-lock";
 
 import { Burger, Menu } from "../";
 import { useDisableBodyScroll } from "../../hooks";
 
 interface Props {
-  setOpen: any;
+  setOpen: Dispatch<SetStateAction<boolean>>;
   open: boolean;
 }
 

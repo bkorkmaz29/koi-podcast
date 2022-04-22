@@ -4,11 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 import { StyledSubscriptions } from "./Subscriptions.styled";
 import { Podcast, Podcasts, Nav } from "../../components";
-import { getCurrentUser, getCurrentUserId, getHeaders } from "../../services/authService";
+import {
+  getCurrentUser,
+  getCurrentUserId,
+  getHeaders,
+} from "../../services/authService";
 import { IPodcast, UserContextType } from "../../models/models";
 import { UserContext } from "../../context/userContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useOnClickOutside } from "../../hooks";
 
 const Subscriptions: React.FC = () => {
@@ -23,17 +27,14 @@ const Subscriptions: React.FC = () => {
   useOnClickOutside(node, () => setOpen(false));
   const headers = getHeaders();
   //const API_URL = "http://localhost:5000"
-  const API_URL = "https://koi-pod.herokuapp.com"
+  const API_URL = "https://koi-pod.herokuapp.com";
 
   let navigate = useNavigate();
   useEffect(() => {
     if (!userId) {
       navigate("/");
     }
-    
-    
-  }, [userId])
-  
+  }, [userId]);
 
   useEffect(() => {
     const getSubs = async () => {
@@ -56,7 +57,6 @@ const Subscriptions: React.FC = () => {
 
   useEffect(() => {
     updateSubs(subs.map((sub) => sub.id));
-    
   }, [subs]);
 
   const parseJSON = (data: Array<string>) => {
@@ -75,7 +75,7 @@ const Subscriptions: React.FC = () => {
   };
 
   const handleUnsubscribe = async (podcast: IPodcast) => {
-    setSubs(subs.filter(sub => sub !== podcast))
+    setSubs(subs.filter((sub) => sub !== podcast));
     await axios
       .post(
         `${API_URL}/api/podcast/subscribe/cancel`,
@@ -83,8 +83,8 @@ const Subscriptions: React.FC = () => {
           userId: userId,
           podcast: podcast,
         },
-        { 
-          headers: headers 
+        {
+          headers: headers,
         }
       )
       .then(() => console.log("Unsubscribed"))
@@ -99,30 +99,34 @@ const Subscriptions: React.FC = () => {
           podcast: podcast,
         },
         {
-           headers: headers 
+          headers: headers,
         }
       )
       .then(() => console.log("Subscribed"))
       .catch((err) => console.error(err));
   };
 
-
   return (
     <StyledSubscriptions open={open}>
-      <div  ref={node} className="nav-wrapper">
-       <Nav setOpen={setOpen} open={open}/>
-       </div>
-     {!show && <h2>My Podcasts</h2> }
-     {show && <button className="button-back" onClick = {() => setShow(false)}><FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} /></button> }
+      <div ref={node} className="nav-wrapper">
+        <Nav setOpen={setOpen} open={open} />
+      </div>
+      {!show && <h2>My Podcasts</h2>}
+      {show && (
+        <button className="button-back" onClick={() => setShow(false)}>
+          <FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} />
+        </button>
+      )}
       <div className="podcasts-wrapper">
-      {!show &&
-      <Podcasts
-        onClick={handleClick}
-        podcasts={subs}
-        subscribe={handleSubscribe}
-        unsubscribe={handleUnsubscribe}
-      /> }
-      {show && podcast && <Podcast podcast={podcast}/>}
+        {!show && (
+          <Podcasts
+            onClick={handleClick}
+            podcasts={subs}
+            subscribe={handleSubscribe}
+            unsubscribe={handleUnsubscribe}
+          />
+        )}
+        {show && podcast && <Podcast podcast={podcast} />}
       </div>
     </StyledSubscriptions>
   );

@@ -3,15 +3,17 @@ import ReactAudioPlayer from "react-audio-player";
 
 import { StyledEpisodes, StyledEpisodeCard } from "./Episodes.styled";
 
-interface Props {
-  episodes: any;
+import { Episode } from "../../models/models";
+
+interface EpisodesProps {
+  episodes: Array<Episode>;
 }
 
-interface IProps {
-  episode: any;
+interface EpisodeProps {
+  episode: Episode;
 }
 
-const EpisodeCard: React.FC<IProps> = ({ episode }) => {
+const EpisodeCard: React.FC<EpisodeProps> = ({ episode }) => {
   const [listen, setListen] = useState<boolean>(false);
 
   return (
@@ -32,7 +34,7 @@ const EpisodeCard: React.FC<IProps> = ({ episode }) => {
   );
 };
 
-const Episodes: React.FC<Props> = ({ episodes }) => {
+const Episodes: React.FC<EpisodesProps> = ({ episodes }) => {
   return (
     <StyledEpisodes>
       {episodes.map((episode: any) => (
