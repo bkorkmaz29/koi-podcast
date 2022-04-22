@@ -1,7 +1,16 @@
+import { Dispatch, SetStateAction } from "react";
+
 import { StyledBurger } from "./Burger.styled";
 import logo from "../../assets/logo.png";
 
-const Burger = ({ open, setOpen }) => {
+interface Props {
+
+  open: boolean,
+  setOpen: Dispatch<SetStateAction<boolean>>;
+
+}
+
+const Burger: React.FC<Props> = ({ open, setOpen }) => {
   const isExpanded = open ? true : false;
 
   return (

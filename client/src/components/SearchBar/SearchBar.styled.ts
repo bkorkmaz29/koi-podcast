@@ -23,6 +23,7 @@ export const StyledSearchBar = styled.form`
     padding: 5px;
     border-top-left-radius: 9px;
     border-bottom-left-radius: 9px;
+    
   }
 
   .submit-button {

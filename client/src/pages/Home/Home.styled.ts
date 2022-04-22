@@ -18,13 +18,14 @@ export const StyledHome = styled.div<Props>`
   .nav-wrapper {
     position: absolute;
     left: 0;
-    top: 0;
-    height: 0;
-    height: ${({ open }) => (open ? "100vh" : "0vh")};
+    top: 0;    
     font-size: 1.5rem;
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
       width: 100vw;
+    }
+    @media (min-width: ${({ theme }) => theme.tablet}) {
+      width: 0;
     }
   }
 

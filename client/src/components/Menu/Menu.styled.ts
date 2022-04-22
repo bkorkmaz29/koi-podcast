@@ -21,6 +21,7 @@ export const StyledMenu = styled.nav<Props>`
   left: 0;
   transition: transform 0.3s ease-in-out;
   z-index: 2;
+  
 
   @media (max-width: ${({ theme }) => theme.tablet}) {
     font-size: 1.5rem;

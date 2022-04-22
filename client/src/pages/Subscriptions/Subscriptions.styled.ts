@@ -22,6 +22,7 @@ export const StyledSubscriptions = styled.div<Props>`
     height: 0;
     height: ${({ open }) => (open ? "100vh" : "0vh")};
     font-size: 1.5rem;
+    
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
       width: 100vw;
