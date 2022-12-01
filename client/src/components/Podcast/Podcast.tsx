@@ -17,7 +17,7 @@ const Podcast: React.FC<IProps> = ({ podcast }) => {
   useEffect(() => {
     const fetchData = async () => {
       const responseEpisodes = await axios(
-        `https://koi-pod.herokuapp.com/api/podcast/episodes`,
+        `https://koi-podcast.onrender.com/api/podcast/episodes`,
         {
           headers: headers,
           params: {
