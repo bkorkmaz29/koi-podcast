@@ -27,7 +27,7 @@ const Subscriptions: React.FC = () => {
   useOnClickOutside(node, () => setOpen(false));
   const headers = getHeaders();
   //const API_URL = "http://localhost:5000"
-  const API_URL = "https://koi-pod.herokuapp.com";
+  const API_URL = "https://koi-podcast.onrender.com";
 
   let navigate = useNavigate();
   useEffect(() => {
