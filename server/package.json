@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
+  
     "dev:start": "nodemon",
     "start": "node index.js"
   },
@@ -12,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/styled-components": "^5.1.25",
     "nodemon": "^2.0.15"
   },
   "dependencies": {

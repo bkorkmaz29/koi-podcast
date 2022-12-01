@@ -15,7 +15,7 @@ import { SearchBar, Podcast, Podcasts, Nav } from "../../components";
 import { UserContext } from "../../context/userContext";
 import { useOnClickOutside, useDisableBodyScroll } from "../../hooks";
 //const API_URL = "http://localhost:5000"
-const API_URL = "https://koi-pod.herokuapp.com"
+const API_URL = "https://koi-pod.herokuapp.com";
 
 const Search: React.FC = () => {
   const node = useRef<any>(null);
