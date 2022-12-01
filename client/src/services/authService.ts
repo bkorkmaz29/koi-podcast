@@ -1,6 +1,6 @@
 import axios from "axios";
 import { User } from "../models/models";
-const API_URL = "https://koi-pod.herokuapp.com"
+const API_URL = "https://koi-podcast.onrender.com"
 //const API_URL = "http://localhost:5000"
 
 export const loginService = async (loginUser: User) => {
