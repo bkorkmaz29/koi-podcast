@@ -35,6 +35,7 @@ const RegisterForm: React.FC<Props> = ({ onRegister, onLogin }) => {
           type="text"
           placeholder="Enter Username"
           onChange={(e) => setName(e.target.value)}
+          autoComplete="off"
         />
       </div>
       <div className="form-input">
@@ -43,6 +44,7 @@ const RegisterForm: React.FC<Props> = ({ onRegister, onLogin }) => {
           type="text"
           placeholder="Enter Email"
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="Enter Email"
         />
       </div>
       <div className="form-input">
@@ -51,6 +53,7 @@ const RegisterForm: React.FC<Props> = ({ onRegister, onLogin }) => {
           type="password"
           placeholder="Enter Password"
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="Enter Password"
         />
       </div>
       <div className="form-buttons">
