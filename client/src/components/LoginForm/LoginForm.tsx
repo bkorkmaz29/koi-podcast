@@ -17,7 +17,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
   const { touched, errors, isSubmitting, onSignUp } = props;
   return (
     <StyledLoginForm>
-      <Form novalidate>
+      <Form>
         <h1>Login</h1>
         <div className="form-input">
           <label>Email</label>
