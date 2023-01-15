@@ -8,14 +8,12 @@ import { loginService, registerService } from "../../services/authService";
 import logoPI from "../../assets/logoPI.svg";
 
 const Login: React.FC = () => {
-  const [register, setRegister] = useState<boolean>(false);
+  const [register, setRegister] = useState<boolean>(true);
   let navigate = useNavigate();
 
   const handleLogin = (user: User) => {
-    //setLoggedIn(true)
     loginService(user).then(() => {
       navigate("/home");
-      //window.location.reload();
     });
   };
 
@@ -29,20 +27,21 @@ const Login: React.FC = () => {
     <LoginContainer>
       <Header />
       <div className="form-container">
-        {!register && (
+        {register ? (
+          <RegisterForm
+            onLogin={() => setRegister(!register)}
+            onRegister={handleRegister}
+          />
+        ) : (
           <LoginForm
             onLogin={handleLogin}
             onSignUp={() => setRegister(!register)}
           />
         )}
-        {register && (
-          <RegisterForm
-            onLogin={() => setRegister(!register)}
-            onRegister={handleRegister}
-          />
-        )}
       </div>
-      <div className="footer"><img src={logoPI} alt="pi"/></div>
+      <div className="footer">
+        <img src={logoPI} alt="pi" />
+      </div>
     </LoginContainer>
   );
 };

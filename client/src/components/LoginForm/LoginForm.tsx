@@ -1,5 +1,5 @@
 import React from "react";
-//import * as Yup from 'yup';
+
 import { withFormik, FormikProps, FormikErrors, Form, Field } from "formik";
 import { StyledLoginForm } from "./LoginForm.styled";
 
@@ -17,7 +17,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
   const { touched, errors, isSubmitting, onSignUp } = props;
   return (
     <StyledLoginForm>
-      <Form>
+      <Form novalidate>
         <h1>Login</h1>
         <div className="form-input">
           <label>Email</label>
@@ -49,7 +49,7 @@ const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
 
 interface MyFormProps {
   initialEmail?: string;
-  message: string; // if this passed all the way through you might do this or make a union type
+  message: string; 
   onLogin: Function;
 }
 

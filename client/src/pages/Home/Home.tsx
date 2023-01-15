@@ -146,12 +146,12 @@ const Search: React.FC = () => {
         <Nav setOpen={setOpen} open={open} />
       </div>
 
-      {show && (
+      {show ? (
         <button className="button-back" onClick={() => setShow(false)}>
           <FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} />
         </button>
-      )}
-      {!show && (
+      )
+      : 
         <>
           <div className="search-wrapper">
             <SearchBar onSearch={handleSearch} />
@@ -184,13 +184,15 @@ const Search: React.FC = () => {
             )}
           </div>
         </>
-      )}
+      }
 
-      {show && podcast && (
+      {show && podcast ? (
         <div className="podcast-wrapper">
           <Podcast podcast={podcast} />
         </div>
-      )}
+      ) :
+      null
+      }
     </StyledHome>
   );
 };
