@@ -12,6 +12,7 @@ const Login: React.FC = () => {
   let navigate = useNavigate();
 
   const handleLogin = (user: User) => {
+    console.log("loggg")
     loginService(user).then(() => {
       navigate("/home");
     });

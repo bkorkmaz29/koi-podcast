@@ -1,17 +1,20 @@
 import styled from "styled-components";
 
 export const StyledLoginForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  max-width: 25em;
-  max-height: 30em;
-  min-width: 0;
-  background-color: ${({ theme }) => theme.grey};
-  border-radius: 9px;
-  padding: 1em;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 25em;
+    max-height: 30em;
+    min-width: 0;
+    background-color: ${({ theme }) => theme.grey};
+    border-radius: 9px;
+    padding: 1em;
+  }
 
   input[type="password"] {
     border-radius: 4px;
@@ -25,11 +28,12 @@ export const StyledLoginForm = styled.div`
     height: 2em;
   }
 
-  input[type="email"] {
+ input[type="text"] {
     border-radius: 4px;
-    width: 100%;
+    width: 20em;
     height: 2em;
   }
+
   .form-input {
     display: flex;
     flex-direction: column;
@@ -43,7 +47,7 @@ export const StyledLoginForm = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-top: 4em;
-    width: 100%;    
+    width: 100%;
   }
 
   .checkbox {
@@ -80,8 +84,7 @@ export const StyledLoginForm = styled.div`
     color: ${({ theme }) => theme.white};
   }
 
-  h1 { 
+  h2 {
     color: ${({ theme }) => theme.white};
-    margin-bottom: 2em;
   }
 `;

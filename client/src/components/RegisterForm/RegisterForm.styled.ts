@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
-export const StyledRegisterForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  max-width: 25em;
-  max-height: 30em;
-  background-color: ${({ theme }) => theme.grey};
-  border-radius: 9px;
-
+export const StyledRegisterForm = styled.div`
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 25em;
+    max-height: 30em;
+    background-color: ${({ theme }) => theme.grey};
+    border-radius: 9px;
+  }
   input[type="text"] {
     border-radius: 4px;
     width: 20em;

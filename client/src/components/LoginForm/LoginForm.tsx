@@ -1,86 +1,69 @@
 import React from "react";
-
-import { withFormik, FormikProps, FormikErrors, Form, Field } from "formik";
+import { useState } from "react";
+import { useForm, Resolver } from 'react-hook-form';
 import { StyledLoginForm } from "./LoginForm.styled";
 
-interface FormValues {
+type FormValues = {
   email: string;
   password: string;
-}
+};
 
-interface OtherProps {
-  message: string;
+interface Props {
+  onLogin: Function;
   onSignUp: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const InnerForm = (props: OtherProps & FormikProps<FormValues>) => {
-  const { touched, errors, isSubmitting, onSignUp } = props;
+const resolver: Resolver<FormValues> = async (values) => {
+  return {
+    values: values.email ? values : {},
+    errors: !values.email
+      ? {
+          email: {
+            type: 'required',
+            message: 'This is required.',
+          },
+        }
+      : {},
+      
+  };
+};
+
+const LoginForm: React.FC<Props> = ({ onLogin, onSignUp }) => {
+  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver });
+  const onSubmit = handleSubmit(async (data) => await onLogin(data));
+  
+ 
   return (
     <StyledLoginForm>
-      <Form>
-        <h1>Login</h1>
+      <form onSubmit={onSubmit}>
+        <h2>Log In</h2>
         <div className="form-input">
           <label>Email</label>
-          <Field type="email" name="email" />
-          {touched.email && errors.email && <div>{errors.email}</div>}
+          <input type="text" {...register("email")} placeholder="test@test.com" />
+          {errors?.email && <p>{errors.email.message}</p>}
         </div>
         <div className="form-input">
           <label>Password</label>
-          <Field type="password" name="password" />
-          {touched.password && errors.password && <div>{errors.password}</div>}
+          <input type="password" {...register("password")} placeholder="testest" />
+          {errors?.password && <p>{errors.password.message}</p>}
         </div>
         <div className="form-buttons">
-          <button
-            className="login-button"
-            type="submit"
-            value="Login"
-            disabled={isSubmitting}
-          >
+          <div className="checkbox">
+            <input type="checkbox" />
+            <label>Remember Me</label>
+          </div>
+          <button className="login-button" type="submit" value="Login">
             Sign In
           </button>
-          <button className="signup-button" onClick={onSignUp}>
+          <button className="signup-button" type="button" onClick={onSignUp}>
             No account? Sign Up!
           </button>
         </div>
-      </Form>
+      </form>
     </StyledLoginForm>
   );
 };
 
-interface MyFormProps {
-  initialEmail?: string;
-  message: string; 
-  onLogin: Function;
-}
 
-const MyForm = withFormik<MyFormProps, FormValues>({
-  mapPropsToValues: (props) => {
-    return {
-      email: props.initialEmail || "",
-      password: "",
-    };
-  },
-
-  validate: (values: FormValues) => {
-    let errors: FormikErrors<FormValues> = {};
-    if (!values.email) {
-      errors.email = "Required";
-    }
-    return errors;
-  },
-
-  handleSubmit: (values, { props }) => {
-    props.onLogin(values.email, values.password);
-  },
-})(InnerForm);
-
-interface loginProps {
-  onLogin: Function;
-  onSignUp: React.MouseEventHandler<HTMLButtonElement>;
-}
-// Use <MyForm /> wherevs
-const LoginForm: React.FC<loginProps> = ({ onLogin }, { onSignUp }) => (
-  <MyForm onLogin={onLogin} onSignUp={onSignUp} />
-);
 
 export default LoginForm;
