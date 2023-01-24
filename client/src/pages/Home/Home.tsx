@@ -4,7 +4,7 @@ import { StyledHome } from "./Home.styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
+import { token } from "../../services/authService";
 import { User, IPodcast, UserContextType } from "../../models/models";
 import {
   getCurrentUser,
@@ -37,10 +37,10 @@ const Search: React.FC = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (!userId) {
+    if (token()) {
       navigate("/");
     }
-  }, [userId]);
+  }, []);
 
   const parseJSON = (data: Array<string>) => {
     var jsonArray: number[] = [];
