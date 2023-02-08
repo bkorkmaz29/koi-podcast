@@ -57,6 +57,9 @@ export const StyledRegisterForm = styled.div`
     color: #ffd021;
     background-color: ${({ theme }) => theme.grey};
     border: none;
+    :hover {
+      opacity: 0.8;
+    }
   }
 
   .register-button {
@@ -74,6 +77,9 @@ export const StyledRegisterForm = styled.div`
     text-decoration: none;
     text-shadow: 0px 1px 0px #3d768a;
     margin: 1em;
+    :hover {
+      opacity: 0.8;
+    }
   }
 
   label {

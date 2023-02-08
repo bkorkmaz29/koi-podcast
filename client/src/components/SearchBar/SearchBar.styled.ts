@@ -9,11 +9,19 @@ export const StyledSearchBar = styled.form`
   height: 3rem;
   margin: auto;
 
-  @media (max-width: ${({ theme }) => theme.tablet}) {
-      margin-top: 4rem ;
-      width: 20rem;
+  @media (min-width: ${({ theme }) => theme.smobile}) {
+    margin-top: 4rem;
+    width: 15rem;
+    font-size: 0.5rem;
+  }
 
-    }
+  @media (min-width: ${({ theme }) => theme.mobile}) {
+    margin-top: 4rem;
+    font-size: 0.75rem;
+  }
+  @media (max-width: ${({ theme }) => theme.tablet}) {
+    margin-top: 4rem;
+  }
 
   input {
     width: 80%;
@@ -23,7 +31,6 @@ export const StyledSearchBar = styled.form`
     padding: 5px;
     border-top-left-radius: 9px;
     border-bottom-left-radius: 9px;
-    
   }
 
   .submit-button {
@@ -41,9 +48,15 @@ export const StyledSearchBar = styled.form`
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
     font-size: 1.2rem;
-    
-    &:hover {
 
+    @media (min-width: ${({ theme }) => theme.smobile}) {
+      font-size: 0.7rem;
+    }
+
+    @media (min-width: ${({ theme }) => theme.mobile}) {
+      font-size: 0.8rem;
+    }
+    &:hover {
       opacity: 0.8;
     }
   }

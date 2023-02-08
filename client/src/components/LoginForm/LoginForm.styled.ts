@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledLoginForm = styled.div`
-
   form {
     display: flex;
     flex-direction: column;
@@ -28,7 +27,7 @@ export const StyledLoginForm = styled.div`
     height: 2em;
   }
 
- input[type="text"] {
+  input[type="text"] {
     border-radius: 4px;
     width: 20em;
     height: 2em;
@@ -60,9 +59,13 @@ export const StyledLoginForm = styled.div`
     color: ${({ theme }) => theme.mango};
     background-color: ${({ theme }) => theme.grey};
     border: none;
+    :hover {
+      opacity: 0.8;
+    }
   }
 
   .login-button {
+    margin: 1em;
     box-shadow: 0px 10px 14px -7px #276873;
     background: linear-gradient(to bottom, #f16323 5%, #ffd021 100%);
     background-color: #f16323;
@@ -76,7 +79,9 @@ export const StyledLoginForm = styled.div`
     padding: 13px 32px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #3d768a;
-    margin: 1em;
+    :hover {
+      opacity: 0.8;
+    }
   }
 
   label {

@@ -6,13 +6,13 @@ interface Props {
 
 export const StyledHome = styled.div<Props>`
   background-color: ${({ theme }) => theme.black};
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   min-height: 100vh;
   min-width: 100vw;
   display: grid;
-  grid-template-rows: 0fr 0fr 2fr;
+  grid-template-rows: 0fr 0fr 3fr;
   padding: 2em;
 
   .nav-wrapper {
