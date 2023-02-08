@@ -45,13 +45,14 @@ const Podcast: React.FC<IProps> = ({ podcast }) => {
                 <h1>{podcast.title} </h1>
                 <h3>by {podcast.author}</h3>
                 <div className="cat-wrapper">
-                  {Object.values(podcast.categories).map((category, index) => (
-                    <div key={index} className="category">
-                      {category}
-                    </div>
-                  ))}
+                  {Object.values(podcast.categories)
+                    .slice(0, 3)
+                    .map((category, index) => (
+                      <div key={index} className="category">
+                        {category}
+                      </div>
+                    ))}
                 </div>
-                <p> {podcast.description}</p>
               </div>
             </div>
           </div>

@@ -4,6 +4,8 @@ import { StyledHome } from "./Home.styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { Grid } from "@mui/material";
+
 import { token } from "../../services/authService";
 import { User, IPodcast, UserContextType } from "../../models/models";
 import {
@@ -150,8 +152,7 @@ const Search: React.FC = () => {
         <button className="button-back" onClick={() => setShow(false)}>
           <FontAwesomeIcon size="lg" icon={faArrowAltCircleLeft} />
         </button>
-      )
-      : 
+      ) : (
         <>
           <div className="search-wrapper">
             <SearchBar onSearch={handleSearch} />
@@ -184,15 +185,13 @@ const Search: React.FC = () => {
             )}
           </div>
         </>
-      }
+      )}
 
       {show && podcast ? (
         <div className="podcast-wrapper">
           <Podcast podcast={podcast} />
         </div>
-      ) :
-      null
-      }
+      ) : null}
     </StyledHome>
   );
 };

@@ -6,7 +6,7 @@ interface Props {
 
 export const StyledHome = styled.div<Props>`
   background-color: ${({ theme }) => theme.black};
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   min-height: 100vh;
@@ -18,7 +18,7 @@ export const StyledHome = styled.div<Props>`
   .nav-wrapper {
     position: absolute;
     left: 0;
-    top: 0;    
+    top: 0;
     font-size: 1.5rem;
 
     @media (min-width: ${({ theme }) => theme.smobile}) {
