@@ -11,22 +11,22 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 12px;
 
   @media (min-width: ${({ theme }) => theme.smobile}) {
-    font-size: 12px;
+    font-size: 0.8em;
   }
 
   @media (min-width: ${({ theme }) => theme.mobile}) {
-    font-size: 13px;
+    font-size: 0.9em;
   }
 
   @media (min-width: ${({ theme }) => theme.tablet}) {
-    font-size: 16px;
+    font-size: 1em;
   }
 
   @media (min-width: ${({ theme }) => theme.desktop}) {
-    font-size: 16px;
+    font-size: 1.1em;
   }
 
   .form-container {
@@ -34,7 +34,7 @@ export const LoginContainer = styled.div`
     background-color: ${({ theme }) => theme.grey};
     width: 25em;
     height: 32em;
-    margin: 6em auto 0;
+    margin: 8em auto 0;
   }
 
   .footer {

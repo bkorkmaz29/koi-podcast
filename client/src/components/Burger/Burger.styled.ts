@@ -20,7 +20,7 @@ export const StyledBurger = styled.div<Props>`
 
   @media (min-width: ${({ theme }) => theme.smobile}) {
     position: relative;
-    margin: auto;
+    margin: 1em auto;
   }
 
   @media (min-width: ${({ theme }) => theme.mobile}) {

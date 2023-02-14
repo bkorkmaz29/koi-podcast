@@ -17,15 +17,15 @@ export const StyledHome = styled.div<Props>`
 
   .nav-wrapper {
     position: absolute;
+    display: flex;
+    justify-content: center;
     left: 0;
     top: 0;
     font-size: 1.5rem;
 
-    @media (min-width: ${({ theme }) => theme.smobile}) {
-      width: 100vw;
-    }
+    width: 100vw;
     @media (min-width: ${({ theme }) => theme.tablet}) {
-      width: 0;
+      justify-content: flex-start;
     }
   }
 
