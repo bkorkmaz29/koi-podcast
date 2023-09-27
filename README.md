@@ -1,6 +1,6 @@
 # Koi Podcast
 
-Podcast directory made with MERN stack using Podcast Index API.
+Podcast directory using Podcast Index API. Made for learning MERN stack.
 
 ### [Live Demo](https://koi-podcast.vercel.app/)
 **Test account**<br>  email = "test<span>@t</span>est.com" <br> password = "testtest"
